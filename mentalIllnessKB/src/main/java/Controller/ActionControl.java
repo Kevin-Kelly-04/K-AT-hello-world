@@ -7,12 +7,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import View.*;
-import Model.*;
+//import Model.*;
 
 public class ActionControl extends Observable implements ActionListener, MouseListener {
-	private Panel panel;
+	private UserPanel panel;
 	
-	public ActionControl(Panel panel) {
+	public ActionControl(UserPanel panel) {
 		this.panel = panel;
 	}
 	public void actionPerformed(ActionEvent e) {
