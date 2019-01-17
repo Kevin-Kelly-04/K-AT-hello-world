@@ -10,12 +10,19 @@ public class UserModel extends Observable implements Observer {
     public UserModel() {
         this.setChanged();
         this.notifyObservers();
+        questions.add("Do you want to run the program for self-use, or do you want to" +
+                " use the program as a supervisor?");
         questions.add("Question 1");
         questions.add("Question 2");
         questions.add("Question 3");
         questions.add("Question 4");
         questions.add("Question 5");
         questions.add("Question 6");
+
+        ArrayList<String> firstQAnswers = new ArrayList<>();
+        firstQAnswers.add("Self-use");
+        firstQAnswers.add("Suprvisor");
+        answers.add(firstQAnswers);
 
         ArrayList<String> Q1ans = new ArrayList<>();
         Q1ans.add("Answer A");
