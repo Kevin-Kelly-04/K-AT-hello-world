@@ -1,20 +1,30 @@
-package com.sample
- 
-import com.sample.DroolsTest.Message;
- 
-rule "Hello World"
+package Controller;
+import Controller.UserFrame.Answers;
+
+rule "Selective Mutism"
+	dialect "java"
     when
-        m : Message( status == Message.HELLO, myMessage : message )
+        $a : Answers (this.getString().equals("Yes") || this.getString().equals("Education") ||
+        this.getString().equals("Occupation") || this.getString().equals("Social communication") ||
+        this.getString().equals("Is not attributable") || this.getString().equals("Autism") ||
+        this.getString().equals("Delusions or hallucinations") || this.getString().equals("Psychotic Disorder") ||
+        this.getString().equals("Generalized Anxiety disorder")  )
     then
-        System.out.println( myMessage );
-        m.setMessage( "Goodbye cruel world" );
-        m.setStatus( Message.GOODBYE );
-        update( m );
+    	System.out.println("Updating");
+    	$a.updateIdx();
+        update( $a );
 end
 
-rule "GoodBye"
+
+/*$a : Answers (getString().equals("Yes") || getString().equals("Education") ||
+        getString().equals("Occupation") || getString().equals("Social communication") ||
+        getString().equals("Is not attributable") || getString().equals("Autism") ||
+        getString().equals("Delusions or hallucinations") || getString().equals("Psychotic Disorder") ||
+        getString().equals("Generalized Anxiety disorder")  )*/
+
+/*rule "GoodBye"
     when
         Message( status == Message.GOODBYE, myMessage : message )
     then
         System.out.println( myMessage );
-end
+end*/
