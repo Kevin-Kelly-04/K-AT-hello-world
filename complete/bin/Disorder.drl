@@ -1,0 +1,18 @@
+#created on: Dec 15, 2018
+package com.sample
+
+import com.sample.userChoice
+import Model.UserModel
+
+
+//declare any global variables here
+dialect "java"
+
+rule "Disorder1"
+   
+   when
+      item : userChoice(mentalDisorder == userChoice.Choice.Schizo)
+   
+   then
+      ; 
+end
