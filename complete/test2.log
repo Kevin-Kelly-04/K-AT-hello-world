@@ -1,11 +1,5 @@
 <object-stream>
 <org.drools.audit.event.ActivationLogEvent>
-  <type>7</type>
-  <activationId>Selective Mutism [1]</activationId>
-  <rule>Selective Mutism</rule>
-  <declarations>$a=Controller.UserFrame$Answers@2dc2169a(1)</declarations>
-</org.drools.audit.event.ActivationLogEvent>
-<org.drools.audit.event.ActivationLogEvent>
   <type>6</type>
   <activationId>Selective Mutism [1]</activationId>
   <rule>Selective Mutism</rule>
@@ -5751,20 +5745,14 @@
 </org.drools.audit.event.ObjectLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>7</type>
+  <activationId>Selective Mutism [1]</activationId>
+  <rule>Selective Mutism</rule>
+  <declarations>$a=Controller.UserFrame$Answers@2dc2169a(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>6</type>
   <activationId>Selective Mutism [1]</activationId>
   <rule>Selective Mutism</rule>
   <declarations>$a=Controller.UserFrame$Answers@2dc2169a(1)</declarations>
 </org.drools.audit.event.ActivationLogEvent>
-</object-stream></object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
-</object-stream>
 </object-stream>

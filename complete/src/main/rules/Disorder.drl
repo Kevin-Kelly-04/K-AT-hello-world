@@ -13,7 +13,11 @@ dialect "java"
 rule "Selective Mutism"
    
    when
-      $a : Answers (answers contains "Yes" && (contains "Education" || contains "Occupation"));
+      $a : Answers (answers contains "Yes" && 
+      (contains "Education" || contains "Occupation" || contains "Social communication") &&
+       (contains "Yes" && not contains "No") &&
+        (not contains "Autism" && not contains "Delusions or hallucinations" && not contains "Psychotic Disorder" && not contains "Generalized Anxiety disorder"));
+      
    then
       System.out.println($a);
       System.out.println("TESTING");

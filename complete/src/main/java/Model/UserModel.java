@@ -222,14 +222,14 @@ public class UserModel extends Observable implements Observer {
         ArrayList<String> MutQ2ans = new ArrayList<>();
         MutQ2ans.add("Education");
         MutQ2ans.add("Occupation");
-        MutQ2ans.add("Social commuinication");
+        MutQ2ans.add("Social communication");
         MutQ2ans.add("None of the above");
         MutismA.add(MutQ2ans);
      // (similar to question 2)  
         MutismQ.add("Has the disturbance persisted for over a month?");
         ArrayList<String> MutQ3ans = new ArrayList<>();
         MutQ3ans.add("Yes");
-        MutQ3ans.add("NO");
+        MutQ3ans.add("No");
         MutismA.add(MutQ3ans);
         
         MutismQ.add("Failure to speak is not attributable to to lack of knowledge or comfort with the spoken language required in a social situation");
