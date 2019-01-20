@@ -3,16 +3,20 @@ package com.sample
 
 import com.sample.userChoice
 import Model.UserModel
+import Controller.UserFrame;
+import Controller.UserFrame.Answers;
 
 
 //declare any global variables here
 dialect "java"
 
-rule "Disorder1"
+rule "Selective Mutism"
    
    when
-      item : userChoice(mentalDisorder == userChoice.Choice.Schizo)
-   
+      $a : Answers (answers contains "Yes" && (contains "Education" || contains "Occupation"));
    then
-      ; 
+      System.out.println($a);
+      System.out.println("TESTING");
+    	//$a.updateIdx();
+        //update( $a );
 end

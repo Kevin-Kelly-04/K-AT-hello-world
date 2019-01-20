@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class UserModel extends Observable implements Observer {
     private List<String> questions = new ArrayList<>();
     private List<ArrayList<String>> answers = new ArrayList<ArrayList<String>>();
+    public List<String> givenAnswers = new ArrayList<>();
     
     private List<String> AnxDisQ = new ArrayList<>();
     private List<ArrayList<String>> AnxDisA = new ArrayList<ArrayList<String>>();
@@ -32,14 +33,17 @@ public class UserModel extends Observable implements Observer {
         firstQAnswers.add("Self-use");
         firstQAnswers.add("Suprvisor");
         answers.add(firstQAnswers);
-
-        choiceSelf();
-  
-    }
-    
-    
-    public void choiceSelf() {
         
+        questions.add("What kind of disorder would you like to be asked about?");
+        ArrayList<String> secondQAnswers = new ArrayList<>();
+        secondQAnswers.add("Anxiety Disorder");
+        secondQAnswers.add("Selective Mutism");
+        secondQAnswers.add("Phobia");
+        secondQAnswers.add("Panic Disorder");
+        answers.add(secondQAnswers);
+    }
+    public void choiceSelf(int choice) {
+        if (choice == 1) {
     	AnxDisQ.add("Mark the following that applies to the patient concerning their seperation from major attachment figures");
         ArrayList<String> AnxQ1ans = new ArrayList<>();
         AnxQ1ans.add("Recurrent excessive distress when anticipating or experiencing seperation from home or major attachment figures");
@@ -169,9 +173,7 @@ public class UserModel extends Observable implements Observer {
         AnxQ16ans.add("Sleep disturbances");
         AnxDisA.add(AnxQ16ans);
         
-        //Substance/Medication-induced anxiety Disorder
-        
-        //Is the patient under any of the influence of any of the following substances        AnxDisQ.add("Is the patient under any of the influence of any of the following substances in excessive amounts?");
+        //Substance/Medication-induced anxiety Disorder    
         ArrayList<String> AnxQ17ans = new ArrayList<>();
         AnxQ17ans.add("Alcohol");
         AnxQ17ans.add("Caffeine");
@@ -205,9 +207,8 @@ public class UserModel extends Observable implements Observer {
         AnxQ20ans.add("Yes");
         AnxQ20ans.add("No");
         AnxDisA.add(AnxQ20ans);
-        
-        //Anxiety due to other medical conditions is same questions as above except the substancec question
-        
+        }if (choice == 2) {
+        //Anxiety due to other medical conditions is same questions as above except the substance question
         
         //Selective Mutism
         MutismQ.add("Does the Patient consistently fail to speak in certain social situations whilst speaking in others");
@@ -248,6 +249,7 @@ public class UserModel extends Observable implements Observer {
         MutQ5ans.add("None of the above");
         MutismA.add(MutQ5ans);
         
+        } if (choice == 3) {
         //SPECIFIC PHOBIA
         PhobiaQ.add("Is the patient marked by fear of specific object or situation?");
         ArrayList<String> PhobiaQ1ans = new ArrayList<>();
@@ -350,8 +352,7 @@ public class UserModel extends Observable implements Observer {
         PhobiaQ13ans.add("Above conditions are present but the present disturbance is significantly excessive");
         PhobiaQ13ans.add("None of the above");
         PhobiaA.add(PhobiaQ13ans);
-        
-        
+        }if (choice == 4) {
         //Panic Disorder 
         PanicDisQ.add("Does the patient suffer from sudden and recurring intense fear or intense discomfort followed by any of the following symptoms ");
         ArrayList<String> PanicDisQ1ans = new ArrayList<>();
@@ -393,21 +394,54 @@ public class UserModel extends Observable implements Observer {
         PanicDisQ4ans.add("Traumatic event"); //Truama induced anxiety
         PanicDisQ4ans.add("Seperation of attachment figures");//Seperation anxiety 
         PanicDisA.add(PanicDisQ4ans);
-        
         //Panic Attack Specifier
-        
-    }
-    
+        }
+	}
     
     
     /*public void choiceSuper() {
     	
     }*/
+    
+    public void choiceSuper(int choice) {
+        System.out.println("Supervising...");
+    }
     public void update(Observable observable, Object message) {
         this.setChanged();
         this.notifyObservers();
     }
 
+    public List getQuestions(int choice) {
+        if (choice == 0) {
+            return this.questions;
+        } else if (choice == 1) {
+            return this.AnxDisQ;
+        } else if (choice == 2) {
+            return this.MutismQ;
+        } else if (choice == 3) {
+            return this.PhobiaQ;
+        } else if (choice == 4) {
+            return this.PanicDisQ;
+        } else {
+            return null;
+        }
+    }
+
+    public List getAnswers(int choice) {
+        if (choice == 0 ) {
+            return this.answers;
+        } else if (choice == 1) {
+        	 return this.AnxDisA;
+        } else if (choice == 2) {
+            return this.MutismA;
+        } else if (choice == 3) {
+            return this.PhobiaA;
+        } else if (choice == 4) {
+            return this.PanicDisA;
+        } else {
+            return null;
+        }
+    }
     public List getQuestions() {
         return this.questions;
     }
@@ -416,37 +450,13 @@ public class UserModel extends Observable implements Observer {
         return this.answers;
     }
     
-    public List getMutQ() {
-        return this.MutismQ;
+    public List getGivenAnswers() {
+        return this.givenAnswers;
     }
 
-    public List getMutA() {
-        return this.MutismA;
+    public void addAnswer(String answer) {
+        this.givenAnswers.add(answer);
     }
-    
-    public List getAnxQ() {
-        return this.AnxDisQ;
-    }
-
-    public List getAnxA() {
-        return this.AnxDisA;
-    }
-    
-    public List getPhobiaQ() {
-        return this.PhobiaQ;
-    }
-
-    public List getPhobiaA() {
-        return this.PhobiaA;
-    }
-    public List getPanicDisQ() {
-        return this.PanicDisQ;
-    }
-
-    public List getPanicDisA() {
-        return this.PanicDisA;
-    }
-
 
 
 
