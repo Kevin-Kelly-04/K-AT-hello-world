@@ -1,0 +1,82 @@
+package com.sample
+
+//import com.sample.userChoice
+import Model.UserModel
+import Controller.UserFrame;
+import Controller.UserFrame.Answers;
+
+
+//declare any global variables here
+dialect "java"
+
+rule "Selective Mutism"
+   
+   when
+      $a : Answers (answers contains "Yes1" && 
+      (contains "Education" || contains "Occupation" || contains "Social communication") &&
+       (contains "Yes3") && (contains "Is not attributable") &&
+        (not contains "Autism" && not contains "Delusions or hallucinations" && not contains "Psychotic Disorder" && not contains "Generalized Anxiety disorder"));
+      
+   then
+      $a.updateIdx();
+end
+
+
+rule "Panic Disorder"
+	when
+		$b : Answers (answers contains "Yes1" &&
+		(contains "Change in behaviour designed to avoid panic attack" || contains "Persistent concern or worry about additional panic attacks or the consequences that follow") &&
+		(contains "None of the above") && (contains "None of the above."))
+	then
+		$b.updateIdx();
+end
+
+rule "Specific Phobia"
+	when
+		$c : Answers (answers contains "Yes1" && (contains "Yes2") && (contains "Yes3") && (contains "Yes4") &&
+		(contains "Education" || contains "Occupation" || contains "Social circumstance") && (contains "Yes6") &&
+		(contains "Yes7") && (contains "Animal" || contains "Natural environment" || contains "Situational" ||
+		contains "Other"))
+	then
+		$c.updateIdx();
+end
+
+rule "Agoraphobia"
+	when
+		$d : Answers (answers contains "Yes9" && contains "Yes10" && contains "Yes11" && contains "Yes12"
+		&& contains "Yes13")
+	then
+		$d.updateIdx();
+end
+
+rule "Seperation Anxiety Disorder"
+
+	when
+		$e : Answers (answers contains "Yes1" && contains "6 months or more" && contains "Yes3" && not contains "Yes4");
+	then
+		$e.setDisease("SepAnx");
+end
+
+rule "Social Anxiety Disorder"
+	when
+		$f : Answers (answers contains "Yes5" && contains "Yes6" && contains "Yes7" && contains "Yes8" && contains "Yes9" && not contains "Yes10" &&
+		not contains "Yes13" && not contains "The disturbance is moderate or benign and related to the medical condition");
+	then
+		$f.setDisease("SocAnx");
+end
+
+rule "Generalized Anxiety Disorder"
+	when
+		$g : Answers (answers contains "Yes14" && contains "Yes15" && contains "Yes16");
+	then
+		$g.setDisease("GenAnx");
+end
+
+rule "Substance/Medication-induced anxiety Disorder"
+	when
+		$h : Answers (answers (contains "Yes17" && contains "Yes18" &&
+	 	not contains "The patient is on medication but the symptoms preceded its start" && not contains "The patient has taken medication but the disturbannce has persisted for more than a month after cessation")
+	  	|| contains "Yes20");
+	then
+		$h.setDisease("SubstAnx");
+end
