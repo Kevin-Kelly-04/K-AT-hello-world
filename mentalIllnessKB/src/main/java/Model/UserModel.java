@@ -30,7 +30,7 @@ public class UserModel extends Observable implements Observer {
                 " use the program as a supervisor?");
 
         ArrayList<String> firstQAnswers = new ArrayList<>();
-        firstQAnswers.add("Self-use");
+        //firstQAnswers.add("Self-use");
         firstQAnswers.add("Supervisor");
         answers.add(firstQAnswers);
 

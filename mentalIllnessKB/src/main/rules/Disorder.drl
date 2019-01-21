@@ -19,20 +19,16 @@ rule "Selective Mutism"
         (not contains "Autism" && not contains "Delusions or hallucinations" && not contains "Psychotic Disorder" && not contains "Generalized Anxiety disorder"));
       
    then
-      System.out.println($a);
-      System.out.println("TESTING");
       $a.updateIdx();
-        //update( $a );
 end
 
 
 rule "Panic Disorder"
 	when
-		$b : Answers (answers contains "Yes1" && 
+		$b : Answers (answers contains "Yes1" &&
 		(contains "Change in behaviour designed to avoid panic attack" || contains "Persistent concern or worry about additional panic attacks or the consequences that follow") &&
 		(contains "None of the above") && (contains "None of the above."))
 	then
-		System.out.println("PANIC DISORDER");
 		$b.updateIdx();
 end
 
@@ -43,7 +39,6 @@ rule "Specific Phobia"
 		(contains "Yes7") && (contains "Animal" || contains "Natural environment" || contains "Situational" ||
 		contains "Other"))
 	then
-		System.out.println("SPECIFIC PHOBIA");
 		$c.updateIdx();
 end
 
@@ -52,7 +47,6 @@ rule "Agoraphobia"
 		$d : Answers (answers contains "Yes9" && contains "Yes10" && contains "Yes11" && contains "Yes12"
 		&& contains "Yes13")
 	then
-		System.out.println("AGORAPHOBIA");
 		$d.updateIdx();
 end
 
@@ -61,25 +55,22 @@ rule "Seperation Anxiety Disorder"
 	when
 		$e : Answers (answers contains "Yes1" && contains "6 months or more" && contains "Yes3" && not contains "Yes4");
 	then
-		System.out.println("Seperation Anxiety");
-		 $e.setDisease("SepAnx");
+		$e.setDisease("SepAnx");
 end
 
-rule "Social Anciety Disorder"
+rule "Social Anxiety Disorder"
 	when
 		$f : Answers (answers contains "Yes5" && contains "Yes6" && contains "Yes7" && contains "Yes8" && contains "Yes9" && not contains "Yes10" &&
 		not contains "Yes13" && not contains "The disturbance is moderate or benign and related to the medical condition");
 	then
-		System.out.println("Social Anxiety Disorder");
-		 $f.setDisease("SocAnx");
+		$f.setDisease("SocAnx");
 end
 
 rule "Generalized Anxiety Disorder"
 	when
 		$g : Answers (answers contains "Yes14" && contains "Yes15" && contains "Yes16");
 	then
-		System.out.println("Generalized Anxiety Disorder");
-		 $g.setDisease("GenAnx");
+		$g.setDisease("GenAnx");
 end
 
 rule "Substance/Medication-induced anxiety Disorder"
@@ -88,7 +79,6 @@ rule "Substance/Medication-induced anxiety Disorder"
 	 	not contains "The patient is on medication but the symptoms preceded its start" && not contains "The patient has taken medication but the disturbannce has persisted for more than a month after cessation")
 	  	|| contains "Yes20");
 	then
-		System.out.println("Substance/Medication-induced anxiety Disorder");
-		 $h.setDisease("SubstAnx");
+		$h.setDisease("SubstAnx");
 end
 
