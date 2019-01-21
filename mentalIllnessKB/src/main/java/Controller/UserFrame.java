@@ -55,7 +55,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
 
         // Create a splitpane which separates the questions from the answers
         splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-        splitPane.setDividerLocation(150);
+        splitPane.setDividerLocation(125);
         splitPane.setTopComponent(questionPanel);
         splitPane.setBottomComponent(answerPanel);
 
@@ -229,7 +229,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         }
 
         // Update the frame
-        splitPane.setDividerLocation(150);
+        splitPane.setDividerLocation(125);
         userFrame.repaint();
         userFrame.setVisible(true);
         index++;
