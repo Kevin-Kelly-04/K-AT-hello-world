@@ -24,10 +24,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserFrame extends JFrame implements ActionListener {
+public class UserFrame extends JFrame implements ActionListener, ItemListener {
     private static final long serialVersionUID = 1L;
     private UserModel userModel = new UserModel();
     private JSplitPane splitPane = new JSplitPane();
@@ -41,7 +43,8 @@ public class UserFrame extends JFrame implements ActionListener {
     private int index2 = 0;
     private int userType;
     private ArrayList listAnswers;
-    
+    public ArrayList<String> checkboxList = new ArrayList<>();
+    public Answers answers = new Answers();
 
     public UserFrame(UserModel model) {
         this.setUserModel(model);
@@ -74,32 +77,83 @@ public class UserFrame extends JFrame implements ActionListener {
 
         answerPanel.add(formatPanel);
         userFrame.setVisible(true);
-        
+
     }
 
     public void actionPerformed(ActionEvent e) {
         // Get the action command and update the answer so that Drools can process the answer
-        System.out.println("index = " + index);
-        System.out.println("index 2 =" + index2);
-      
 
         String performedAction = e.getActionCommand();
-        
-        if (index > 2) {
+        if (performedAction.equals("Next") && checkboxList != null) {
+            if (disease == 1 && index2 == 1) {
+                if (checkboxList.size() >= 4) {
+                    userModel.addAnswer("Yes" + Integer.toString(index2));
+                } else {
+                    userModel.addAnswer("No");
+                }
+            } else if (disease == 1 && index2 == 4) {
+                if (checkboxList.size() >= 1) {
+                    userModel.addAnswer("Yes" + Integer.toString(index2));
+                } else {
+                    userModel.addAnswer("No");
+                }
+            } else if (disease == 1 && index2 == 16) {
+                if (checkboxList.size() >= 3) {
+                    userModel.addAnswer("Yes" + Integer.toString(index2));
+                } else {
+                    userModel.addAnswer("No");
+                }
+            } else if (disease == 1 && index2 == 17) {
+                if (checkboxList.size() >= 1) {
+                    userModel.addAnswer("Yes" + Integer.toString(index2));
+                } else {
+                    userModel.addAnswer("No");
+                }
+            } else if (disease == 4 && index2 == 1) {
+                if (checkboxList.size() >= 4) {
+                    userModel.addAnswer("Yes" + Integer.toString(index2));
+                } else {
+                    userModel.addAnswer("No");
+                }
+            } else if (disease == 3 && index2 == 9) {
+                if (checkboxList.size() >= 2) {
+                    userModel.addAnswer("Yes" + Integer.toString(index2));
+                } else {
+                    userModel.addAnswer("No");
+                }
+            } else if (disease == 3 && index2 == 7) {
+                if (checkboxList.size() == 0) {
+                    userModel.addAnswer("Yes" + Integer.toString(index2));
+                } else {
+                    userModel.addAnswer("No");
+                }
+            }  else if (disease == 3 && index2 == 12) {
+                if (checkboxList.size() >= 1) {
+                    userModel.addAnswer("Yes" + Integer.toString(index2));
+                } else {
+                    userModel.addAnswer("No");
+                }
+            }
+            checkboxList.clear();
+        }
+        if (index > 2 && !performedAction.equals("Next")) {
             userModel.addAnswer(performedAction);
         }
-        
+
         if (index2 >= userModel.getQuestions(disease).size()) {
             index2 = 0;
             index = 0;
             runDrools();
             formatPanel.removeAll();
-            text.setText("Diagnosis");
+            text.setText("Diagnosis: " + answers.getString());
+            answers.setString("");
+            answers.setIdx();
             userFrame.repaint();
+            userFrame.setVisible(true);
             return;
 
         }
-        
+
         if (index == 1) {
             switch(performedAction) {
                 case "Self-use":
@@ -115,48 +169,48 @@ public class UserFrame extends JFrame implements ActionListener {
                 case "Anxiety Disorder":
                     disease = 1;
                     if (this.userType == 0) {
-                    	System.out.println("1");
+                        System.out.println("1");
                         this.userModel.choiceSelf(disease);
                     } else {
-                    	System.out.println("2");
+                        System.out.println("2");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
                 case "Selective Mutism":
                     disease = 2;
                     if (this.userType == 0) {
-                    	System.out.println("3");
+                        System.out.println("3");
                         this.userModel.choiceSelf(disease);
                     } else {
-                    	System.out.println("4");
+                        System.out.println("4");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
                 case "Phobia":
                     disease = 3;
                     if (this.userType == 0) {
-                    	System.out.println("5");
+                        System.out.println("5");
                         this.userModel.choiceSelf(disease);
                     } else {
-                    	System.out.println("6");
+                        System.out.println("6");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
                 case "Panic Disorder":
                     disease = 4;
                     if (this.userType == 0) {
-                    	System.out.println("7");
+                        System.out.println("7");
                         this.userModel.choiceSelf(disease);
                     } else {
-                    	System.out.println("8");
+                        System.out.println("8");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
             }
         }
-        
-        
-        
+
+
+
         // Get new question ready on screen
         // Get new question ready on screen
         if (index < 2) {
@@ -173,13 +227,14 @@ public class UserFrame extends JFrame implements ActionListener {
         }
 
         // Create the corresponding new buttons with the new question
-        for (int idx = 0; idx < listAnswers.size(); idx++ ) {
-            JButton newButton = new JButton((String)listAnswers.get(idx));
-            newButton.addActionListener(this);
-            newButton.setActionCommand(newButton.getText());
-            newButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            formatPanel.add(newButton);
+        if ((disease == 1 && (index2 == 0 || index2 == 3 || index2 == 15 || index2 == 16)) ||
+                (disease == 3 && (index2 == 6 || index2 == 8 || index2 == 11))
+                || (disease == 4 && (index2 == 0))) {
+            createJCheckBoxes(listAnswers);
+        } else {
+            createJButtons(listAnswers);
         }
+
         // Update the frame
         splitPane.setDividerLocation(150);
         userFrame.repaint();
@@ -196,7 +251,7 @@ public class UserFrame extends JFrame implements ActionListener {
     }
 
     public class Answers {
-        private List<String> answers;
+        public List<String> answers;
         private String answer;
         private int index = 0;
         public void setAnswers(List answers) {
@@ -211,6 +266,9 @@ public class UserFrame extends JFrame implements ActionListener {
         public int getIdx() {
             return this.index;
         }
+        public void setIdx() {
+            this.index = 0;
+        }
         public void setString(String name) {
             this.answer = name;
         }
@@ -218,7 +276,7 @@ public class UserFrame extends JFrame implements ActionListener {
             return this.answer;
         }
     }
-    
+
     public void runDrools() {
         try {
             // load up the knowledge base
@@ -226,28 +284,62 @@ public class UserFrame extends JFrame implements ActionListener {
             StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
             KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "test");
             // go !
-            Answers answers = new Answers();
-            answers.setAnswers(userModel.getGivenAnswers());
-            System.out.println(answers.getAnswers());
-            for (int idx = 0; idx < answers.getAnswers().size(); idx++) {
-                answers.setString((String)answers.getAnswers().get(idx));
-                System.out.println(answers.getString());
-                ksession.insert(answers);
-            }
 
-            //message.setMessage("Hello World");
-            //message.setStatus(Message.HELLO);
-            //ksession.insert(message);
+            answers.setAnswers(userModel.getGivenAnswers());
+            for (int idx = 0; idx < answers.answers.size(); idx++) {
+                if (answers.answers.get(idx).equals("Yes")) {
+                    answers.answers.set(idx, "Yes" + Integer.toString(idx+1));
+                }
+            }
+            System.out.println(answers.getAnswers());
+            ksession.insert(answers);
             ksession.fireAllRules();
             logger.close();
-            
+            setDiagnosis(answers.getIdx());
+
 
         } catch (Throwable t) {
             t.printStackTrace();
         }
 
     }
-    
+
+    public void setDiagnosis(int index) {
+        if (index == 1) {
+            if (disease == 2) {
+                answers.setString("The patient meets all the requirements for having"
+                        + " selective mutism. Further, extensive research is suggested.");
+            }
+            if (disease == 3) {
+                answers.setString("The patient meets all the requirements for having"
+                        + " a specific phobia. Further, extensive research is suggested.");
+            }
+            if (disease == 4) {
+                answers.setString("The patient meets all the requirements for having"
+                        + " a panic disorder. Further, extensive research is suggested.");
+            }
+
+        } else if (index == 0){
+            if (disease == 2) {
+                answers.setString("The patient does not meet the requirements for having"
+                        + " selective mutism. Nothing to be worried about :)!");
+            }
+            if (disease == 3) {
+                answers.setString("The patient does not meet the requirements for having"
+                        + " a specific phobia or agoraphobia. Nothing to be worried about :)!");
+            }
+            if (disease == 4) {
+                answers.setString("The patient does not meet the requirements for having"
+                        + " a panic disorder. Nothing to be worried about :)!");
+            }
+        } else if (index == 2) {
+            if (disease == 2) {
+                answers.setString("The patient meets all the requirements for having"
+                        + " agoraphobia. Further, extensive research is suggested.");
+            }
+        }
+    }
+
     private static KnowledgeBase readKnowledgeBase() throws Exception {
         KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
         kbuilder.add(ResourceFactory.newClassPathResource("Disorder.drl"), ResourceType.DRL);
@@ -263,5 +355,45 @@ public class UserFrame extends JFrame implements ActionListener {
         return kbase;
     }
 
+    public void createJButtons(ArrayList answerlist) {
+        for (int idx = 0; idx < answerlist.size(); idx++ ) {
+            JButton newButton = new JButton((String)answerlist.get(idx));
+            newButton.addActionListener(this);
+            newButton.setActionCommand(newButton.getText());
+            newButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+            formatPanel.add(newButton);
+        }
+    }
+
+    public void createJCheckBoxes(ArrayList answerlist) {
+        for (int idx = 0; idx < answerlist.size(); idx++ ) {
+            JCheckBox newCheckbox = new JCheckBox((String)answerlist.get(idx));
+            newCheckbox.addItemListener(this);
+            newCheckbox.setAlignmentX(Component.LEFT_ALIGNMENT);
+            formatPanel.add(newCheckbox);
+        }
+        JButton newButton = new JButton("Next");
+        newButton.addActionListener(this);
+        newButton.setActionCommand("Next");
+        newButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        formatPanel.add(newButton);
+    }
+
+    public void itemStateChanged(ItemEvent e) {
+        JCheckBox box = (JCheckBox) e.getItem();
+        int state = e.getStateChange();
+        if (state == ItemEvent.SELECTED){
+            //System.out.println("Now here");
+            checkboxList.add(box.getText());
+        }
+        if (state == ItemEvent.DESELECTED) {
+            //System.out.println("Now here");
+            for (int idx = 0; idx < checkboxList.size(); idx++) {
+                if (checkboxList.get(idx).equals(box.getText())) {
+                    checkboxList.remove(idx);
+                }
+            }
+        }
+    }
 
 }
