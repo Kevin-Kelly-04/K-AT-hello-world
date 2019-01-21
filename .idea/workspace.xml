@@ -29,50 +29,54 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mentalIllnessKB/src/main/java/Model/UserModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="70" column="32" lean-forward="true" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+            <state relative-caret-position="304">
+              <caret line="437" column="32" lean-forward="true" selection-start-line="437" selection-start-column="32" selection-end-line="437" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#468#487#0" expanded="true" />
                 <element signature="e#605#624#0" expanded="true" />
                 <element signature="e#742#761#0" expanded="true" />
                 <element signature="e#883#902#0" expanded="true" />
-                <element signature="e#21315#21316#0" expanded="true" />
-                <element signature="e#21367#21368#0" expanded="true" />
-                <element signature="e#22394#22395#0" expanded="true" />
-                <element signature="e#22431#22432#0" expanded="true" />
-                <element signature="e#22463#22464#0" expanded="true" />
-                <element signature="e#22498#22499#0" expanded="true" />
+                <element signature="e#21316#21317#0" expanded="true" />
+                <element signature="e#21368#21369#0" expanded="true" />
+                <element signature="e#22395#22396#0" expanded="true" />
+                <element signature="e#22432#22433#0" expanded="true" />
+                <element signature="e#22464#22465#0" expanded="true" />
+                <element signature="e#22499#22500#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserFrame.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mentalIllnessKB/src/main/java/Controller/UserFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="333" column="13" lean-forward="true" selection-start-line="333" selection-start-column="13" selection-end-line="333" selection-end-column="13" />
+            <state relative-caret-position="5985">
+              <caret line="426" column="1" lean-forward="false" selection-start-line="426" selection-start-column="1" selection-end-line="426" selection-end-column="1" />
               <folding>
-                <element signature="e#9192#9193#0" expanded="true" />
-                <element signature="e#9230#9231#0" expanded="true" />
-                <element signature="e#9404#9405#0" expanded="true" />
-                <element signature="e#9450#9451#0" expanded="true" />
-                <element signature="e#9485#9486#0" expanded="true" />
-                <element signature="e#9528#9529#0" expanded="true" />
-                <element signature="e#9562#9563#0" expanded="true" />
-                <element signature="e#9598#9599#0" expanded="true" />
-                <element signature="e#9628#9629#0" expanded="true" />
-                <element signature="e#9669#9670#0" expanded="true" />
-                <element signature="e#9700#9701#0" expanded="true" />
-                <element signature="e#9738#9739#0" expanded="true" />
-                <element signature="e#9783#9784#0" expanded="true" />
-                <element signature="e#9825#9826#0" expanded="true" />
-                <element signature="e#9861#9862#0" expanded="true" />
-                <element signature="e#9903#9904#0" expanded="true" />
+                <element signature="e#8849#8850#0" expanded="true" />
+                <element signature="e#8887#8888#0" expanded="true" />
+                <element signature="e#9094#9095#0" expanded="true" />
+                <element signature="e#9140#9141#0" expanded="true" />
+                <element signature="e#9175#9176#0" expanded="true" />
+                <element signature="e#9218#9219#0" expanded="true" />
+                <element signature="e#9252#9253#0" expanded="true" />
+                <element signature="e#9288#9289#0" expanded="true" />
+                <element signature="e#9318#9319#0" expanded="true" />
+                <element signature="e#9359#9360#0" expanded="true" />
+                <element signature="e#9390#9391#0" expanded="true" />
+                <element signature="e#9428#9429#0" expanded="true" />
+                <element signature="e#9473#9474#0" expanded="true" />
+                <element signature="e#9515#9516#0" expanded="true" />
+                <element signature="e#9551#9552#0" expanded="true" />
+                <element signature="e#9593#9594#0" expanded="true" />
+                <element signature="e#9643#9644#0" expanded="true" />
+                <element signature="e#9691#9692#0" expanded="true" />
+                <element signature="e#9728#9729#0" expanded="true" />
+                <element signature="e#9772#9773#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,8 +85,8 @@
       <file leaf-file-name="Disorder.drl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mentalIllnessKB/src/main/rules/Disorder.drl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="63" lean-forward="true" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="63" />
+            <state relative-caret-position="240">
+              <caret line="60" column="8" lean-forward="true" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -113,8 +117,9 @@
         <option value="$PROJECT_DIR$/mentalIllnessKB/src/main/resources/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/mentalIllnessKB/src/main/java/com/sample/DroolsTest.java" />
         <option value="$PROJECT_DIR$/mentalIllnessKB/src/main/rules/Sample.drl" />
-        <option value="$PROJECT_DIR$/mentalIllnessKB/src/main/java/Controller/UserFrame.java" />
+        <option value="$PROJECT_DIR$/mentalIllnessKB/src/main/rules/Disorder.drl" />
         <option value="$PROJECT_DIR$/mentalIllnessKB/src/main/java/Model/UserModel.java" />
+        <option value="$PROJECT_DIR$/mentalIllnessKB/src/main/java/Controller/UserFrame.java" />
       </list>
     </option>
   </component>
@@ -336,12 +341,12 @@
       <updated>1547476001569</updated>
       <workItem from="1547476002946" duration="24488000" />
       <workItem from="1547834089965" duration="1291000" />
-      <workItem from="1548022723404" duration="1092000" />
+      <workItem from="1548022723404" duration="1281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26871000" />
+    <option name="totallyTimeSpent" value="27060000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -402,22 +407,26 @@
         <state relative-caret-position="405">
           <caret line="52" column="76" lean-forward="true" selection-start-line="52" selection-start-column="76" selection-end-line="52" selection-end-column="76" />
           <folding>
-            <element signature="e#9192#9193#0" expanded="true" />
-            <element signature="e#9230#9231#0" expanded="true" />
-            <element signature="e#9404#9405#0" expanded="true" />
-            <element signature="e#9450#9451#0" expanded="true" />
-            <element signature="e#9485#9486#0" expanded="true" />
-            <element signature="e#9528#9529#0" expanded="true" />
-            <element signature="e#9562#9563#0" expanded="true" />
-            <element signature="e#9598#9599#0" expanded="true" />
-            <element signature="e#9628#9629#0" expanded="true" />
-            <element signature="e#9669#9670#0" expanded="true" />
-            <element signature="e#9700#9701#0" expanded="true" />
-            <element signature="e#9738#9739#0" expanded="true" />
-            <element signature="e#9783#9784#0" expanded="true" />
-            <element signature="e#9825#9826#0" expanded="true" />
-            <element signature="e#9861#9862#0" expanded="true" />
-            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#8849#8850#0" expanded="true" />
+            <element signature="e#8887#8888#0" expanded="true" />
+            <element signature="e#9094#9095#0" expanded="true" />
+            <element signature="e#9140#9141#0" expanded="true" />
+            <element signature="e#9175#9176#0" expanded="true" />
+            <element signature="e#9218#9219#0" expanded="true" />
+            <element signature="e#9252#9253#0" expanded="true" />
+            <element signature="e#9288#9289#0" expanded="true" />
+            <element signature="e#9318#9319#0" expanded="true" />
+            <element signature="e#9359#9360#0" expanded="true" />
+            <element signature="e#9390#9391#0" expanded="true" />
+            <element signature="e#9428#9429#0" expanded="true" />
+            <element signature="e#9473#9474#0" expanded="true" />
+            <element signature="e#9515#9516#0" expanded="true" />
+            <element signature="e#9551#9552#0" expanded="true" />
+            <element signature="e#9593#9594#0" expanded="true" />
+            <element signature="e#9643#9644#0" expanded="true" />
+            <element signature="e#9691#9692#0" expanded="true" />
+            <element signature="e#9728#9729#0" expanded="true" />
+            <element signature="e#9772#9773#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -432,12 +441,12 @@
             <element signature="e#605#624#0" expanded="true" />
             <element signature="e#742#761#0" expanded="true" />
             <element signature="e#883#902#0" expanded="true" />
-            <element signature="e#21315#21316#0" expanded="true" />
-            <element signature="e#21367#21368#0" expanded="true" />
-            <element signature="e#22394#22395#0" expanded="true" />
-            <element signature="e#22431#22432#0" expanded="true" />
-            <element signature="e#22463#22464#0" expanded="true" />
-            <element signature="e#22498#22499#0" expanded="true" />
+            <element signature="e#21316#21317#0" expanded="true" />
+            <element signature="e#21368#21369#0" expanded="true" />
+            <element signature="e#22395#22396#0" expanded="true" />
+            <element signature="e#22432#22433#0" expanded="true" />
+            <element signature="e#22464#22465#0" expanded="true" />
+            <element signature="e#22499#22500#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -470,12 +479,12 @@
             <element signature="e#605#624#0" expanded="true" />
             <element signature="e#742#761#0" expanded="true" />
             <element signature="e#883#902#0" expanded="true" />
-            <element signature="e#21315#21316#0" expanded="true" />
-            <element signature="e#21367#21368#0" expanded="true" />
-            <element signature="e#22394#22395#0" expanded="true" />
-            <element signature="e#22431#22432#0" expanded="true" />
-            <element signature="e#22463#22464#0" expanded="true" />
-            <element signature="e#22498#22499#0" expanded="true" />
+            <element signature="e#21316#21317#0" expanded="true" />
+            <element signature="e#21368#21369#0" expanded="true" />
+            <element signature="e#22395#22396#0" expanded="true" />
+            <element signature="e#22432#22433#0" expanded="true" />
+            <element signature="e#22464#22465#0" expanded="true" />
+            <element signature="e#22499#22500#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -485,22 +494,26 @@
         <state relative-caret-position="1020">
           <caret line="68" column="32" lean-forward="true" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
           <folding>
-            <element signature="e#9192#9193#0" expanded="true" />
-            <element signature="e#9230#9231#0" expanded="true" />
-            <element signature="e#9404#9405#0" expanded="true" />
-            <element signature="e#9450#9451#0" expanded="true" />
-            <element signature="e#9485#9486#0" expanded="true" />
-            <element signature="e#9528#9529#0" expanded="true" />
-            <element signature="e#9562#9563#0" expanded="true" />
-            <element signature="e#9598#9599#0" expanded="true" />
-            <element signature="e#9628#9629#0" expanded="true" />
-            <element signature="e#9669#9670#0" expanded="true" />
-            <element signature="e#9700#9701#0" expanded="true" />
-            <element signature="e#9738#9739#0" expanded="true" />
-            <element signature="e#9783#9784#0" expanded="true" />
-            <element signature="e#9825#9826#0" expanded="true" />
-            <element signature="e#9861#9862#0" expanded="true" />
-            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#8849#8850#0" expanded="true" />
+            <element signature="e#8887#8888#0" expanded="true" />
+            <element signature="e#9094#9095#0" expanded="true" />
+            <element signature="e#9140#9141#0" expanded="true" />
+            <element signature="e#9175#9176#0" expanded="true" />
+            <element signature="e#9218#9219#0" expanded="true" />
+            <element signature="e#9252#9253#0" expanded="true" />
+            <element signature="e#9288#9289#0" expanded="true" />
+            <element signature="e#9318#9319#0" expanded="true" />
+            <element signature="e#9359#9360#0" expanded="true" />
+            <element signature="e#9390#9391#0" expanded="true" />
+            <element signature="e#9428#9429#0" expanded="true" />
+            <element signature="e#9473#9474#0" expanded="true" />
+            <element signature="e#9515#9516#0" expanded="true" />
+            <element signature="e#9551#9552#0" expanded="true" />
+            <element signature="e#9593#9594#0" expanded="true" />
+            <element signature="e#9643#9644#0" expanded="true" />
+            <element signature="e#9691#9692#0" expanded="true" />
+            <element signature="e#9728#9729#0" expanded="true" />
+            <element signature="e#9772#9773#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -527,53 +540,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mentalIllnessKB/src/main/rules/Disorder.drl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="63" lean-forward="true" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="63" />
+        <state relative-caret-position="240">
+          <caret line="60" column="8" lean-forward="true" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mentalIllnessKB/src/main/java/Controller/UserFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="333" column="13" lean-forward="true" selection-start-line="333" selection-start-column="13" selection-end-line="333" selection-end-column="13" />
-          <folding>
-            <element signature="e#9192#9193#0" expanded="true" />
-            <element signature="e#9230#9231#0" expanded="true" />
-            <element signature="e#9404#9405#0" expanded="true" />
-            <element signature="e#9450#9451#0" expanded="true" />
-            <element signature="e#9485#9486#0" expanded="true" />
-            <element signature="e#9528#9529#0" expanded="true" />
-            <element signature="e#9562#9563#0" expanded="true" />
-            <element signature="e#9598#9599#0" expanded="true" />
-            <element signature="e#9628#9629#0" expanded="true" />
-            <element signature="e#9669#9670#0" expanded="true" />
-            <element signature="e#9700#9701#0" expanded="true" />
-            <element signature="e#9738#9739#0" expanded="true" />
-            <element signature="e#9783#9784#0" expanded="true" />
-            <element signature="e#9825#9826#0" expanded="true" />
-            <element signature="e#9861#9862#0" expanded="true" />
-            <element signature="e#9903#9904#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mentalIllnessKB/src/main/java/Model/UserModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="70" column="32" lean-forward="true" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+        <state relative-caret-position="304">
+          <caret line="437" column="32" lean-forward="true" selection-start-line="437" selection-start-column="32" selection-end-line="437" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#468#487#0" expanded="true" />
             <element signature="e#605#624#0" expanded="true" />
             <element signature="e#742#761#0" expanded="true" />
             <element signature="e#883#902#0" expanded="true" />
-            <element signature="e#21315#21316#0" expanded="true" />
-            <element signature="e#21367#21368#0" expanded="true" />
-            <element signature="e#22394#22395#0" expanded="true" />
-            <element signature="e#22431#22432#0" expanded="true" />
-            <element signature="e#22463#22464#0" expanded="true" />
-            <element signature="e#22498#22499#0" expanded="true" />
+            <element signature="e#21316#21317#0" expanded="true" />
+            <element signature="e#21368#21369#0" expanded="true" />
+            <element signature="e#22395#22396#0" expanded="true" />
+            <element signature="e#22432#22433#0" expanded="true" />
+            <element signature="e#22464#22465#0" expanded="true" />
+            <element signature="e#22499#22500#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mentalIllnessKB/src/main/java/Controller/UserFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5985">
+          <caret line="426" column="1" lean-forward="false" selection-start-line="426" selection-start-column="1" selection-end-line="426" selection-end-column="1" />
+          <folding>
+            <element signature="e#8849#8850#0" expanded="true" />
+            <element signature="e#8887#8888#0" expanded="true" />
+            <element signature="e#9094#9095#0" expanded="true" />
+            <element signature="e#9140#9141#0" expanded="true" />
+            <element signature="e#9175#9176#0" expanded="true" />
+            <element signature="e#9218#9219#0" expanded="true" />
+            <element signature="e#9252#9253#0" expanded="true" />
+            <element signature="e#9288#9289#0" expanded="true" />
+            <element signature="e#9318#9319#0" expanded="true" />
+            <element signature="e#9359#9360#0" expanded="true" />
+            <element signature="e#9390#9391#0" expanded="true" />
+            <element signature="e#9428#9429#0" expanded="true" />
+            <element signature="e#9473#9474#0" expanded="true" />
+            <element signature="e#9515#9516#0" expanded="true" />
+            <element signature="e#9551#9552#0" expanded="true" />
+            <element signature="e#9593#9594#0" expanded="true" />
+            <element signature="e#9643#9644#0" expanded="true" />
+            <element signature="e#9691#9692#0" expanded="true" />
+            <element signature="e#9728#9729#0" expanded="true" />
+            <element signature="e#9772#9773#0" expanded="true" />
           </folding>
         </state>
       </provider>

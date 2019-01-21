@@ -169,27 +169,22 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                 case "Anxiety Disorder":
                     disease = 1;
                     if (this.userType == 0) {
-                        System.out.println("1");
                         this.userModel.choiceSelf(disease);
                     } else {
-                        System.out.println("2");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
                 case "Selective Mutism":
                     disease = 2;
                     if (this.userType == 0) {
-                        System.out.println("3");
                         this.userModel.choiceSelf(disease);
                     } else {
-                        System.out.println("4");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
                 case "Phobia":
                     disease = 3;
                     if (this.userType == 0) {
-                        System.out.println("5");
                         this.userModel.choiceSelf(disease);
                     } else {
                         System.out.println("6");
@@ -199,10 +194,8 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                 case "Panic Disorder":
                     disease = 4;
                     if (this.userType == 0) {
-                        System.out.println("7");
                         this.userModel.choiceSelf(disease);
                     } else {
-                        System.out.println("8");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
@@ -253,6 +246,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
     public class Answers {
         public List<String> answers;
         private String answer;
+        private String diseaseA;
         private int index = 0;
         public void setAnswers(List answers) {
             this.answers = answers;
@@ -275,6 +269,12 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         public String getString() {
             return this.answer;
         }
+        public void setDisease(String diseaseA) {
+            this.diseaseA = diseaseA;
+        }
+        public String getDisease() {
+            return this.diseaseA;
+        }
     }
 
     public void runDrools() {
@@ -291,7 +291,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                     answers.answers.set(idx, "Yes" + Integer.toString(idx+1));
                 }
             }
-            System.out.println(answers.getAnswers());
+            //System.out.println(answers.getAnswers());
             ksession.insert(answers);
             ksession.fireAllRules();
             logger.close();
@@ -320,6 +320,34 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
             }
 
         } else if (index == 0){
+            if (disease == 1) {
+                String diseaseA = answers.getDisease();
+                if (diseaseA == null) {
+                    diseaseA = "a";
+                }
+                switch(diseaseA) {
+                    case "SepAnx":
+                        answers.setString("The patient meets all the requirements for having"
+                                + " separation anxiety disorder. Further, extensive research is suggested.");
+                        break;
+                    case "SocAnx":
+                        answers.setString("The patient meets all the requirements for having"
+                                + " social anxiety disorder. Further, extensive research is suggested.");
+                        break;
+                    case "GenAnx":
+                        answers.setString("The patient meets all the requirements for having"
+                                + " generalized anxiety disorder. Further, extensive research is suggested.");
+                        break;
+                    case "SubstAnx":
+                        answers.setString("The patient meets all the requirements for having"
+                                + " substance/medication anxiety disorder. Further, extensive research is suggested.");
+                        break;
+                    default: answers.setString("The patient does not meet requirements for any kind of"
+                            + " anxiety disorder. Nothing to be worried about :)!");
+                        break;
+                }
+
+            }
             if (disease == 2) {
                 answers.setString("The patient does not meet the requirements for having"
                         + " selective mutism. Nothing to be worried about :)!");

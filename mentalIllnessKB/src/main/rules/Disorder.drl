@@ -55,3 +55,40 @@ rule "Agoraphobia"
 		System.out.println("AGORAPHOBIA");
 		$d.updateIdx();
 end
+
+rule "Seperation Anxiety Disorder"
+
+	when
+		$e : Answers (answers contains "Yes1" && contains "6 months or more" && contains "Yes3" && not contains "Yes4");
+	then
+		System.out.println("Seperation Anxiety");
+		 $e.setDisease("SepAnx");
+end
+
+rule "Social Anciety Disorder"
+	when
+		$f : Answers (answers contains "Yes5" && contains "Yes6" && contains "Yes7" && contains "Yes8" && contains "Yes9" && not contains "Yes10" &&
+		not contains "Yes13" && not contains "The disturbance is moderate or benign and related to the medical condition");
+	then
+		System.out.println("Social Anxiety Disorder");
+		 $f.setDisease("SocAnx");
+end
+
+rule "Generalized Anxiety Disorder"
+	when
+		$g : Answers (answers contains "Yes14" && contains "Yes15" && contains "Yes16");
+	then
+		System.out.println("Generalized Anxiety Disorder");
+		 $g.setDisease("GenAnx");
+end
+
+rule "Substance/Medication-induced anxiety Disorder"
+	when
+		$h : Answers (answers (contains "Yes17" && contains "Yes18" &&
+	 	not contains "The patient is on medication but the symptoms preceded its start" && not contains "The patient has taken medication but the disturbannce has persisted for more than a month after cessation")
+	  	|| contains "Yes20");
+	then
+		System.out.println("Substance/Medication-induced anxiety Disorder");
+		 $h.setDisease("SubstAnx");
+end
+

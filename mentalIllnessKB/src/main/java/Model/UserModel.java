@@ -31,7 +31,7 @@ public class UserModel extends Observable implements Observer {
 
         ArrayList<String> firstQAnswers = new ArrayList<>();
         firstQAnswers.add("Self-use");
-        firstQAnswers.add("Suprvisor");
+        firstQAnswers.add("Supervisor");
         answers.add(firstQAnswers);
 
         questions.add("What kind of disorder would you like to be asked about?");
@@ -42,7 +42,7 @@ public class UserModel extends Observable implements Observer {
         secondQAnswers.add("Panic Disorder");
         answers.add(secondQAnswers);
     }
-    public void choiceSelf(int choice) {
+    public void choiceSuper(int choice) {
         if (choice == 1) {
             AnxDisQ.add("Mark the following that applies to the patient concerning their separation from major attachment figures");
             ArrayList<String> AnxQ1ans = new ArrayList<>();
@@ -407,7 +407,7 @@ public class UserModel extends Observable implements Observer {
 
     }*/
 
-    public void choiceSuper(int choice) {
+    public void choiceSelf(int choice) {
         System.out.println("Supervising...");
     }
     public void update(Observable observable, Object message) {
