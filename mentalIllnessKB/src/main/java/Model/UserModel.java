@@ -44,16 +44,16 @@ public class UserModel extends Observable implements Observer {
     }
     public void choiceSelf(int choice) {
         if (choice == 1) {
-            AnxDisQ.add("Mark the following that applies to the patient concerning their seperation from major attachment figures");
+            AnxDisQ.add("Mark the following that applies to the patient concerning their separation from major attachment figures");
             ArrayList<String> AnxQ1ans = new ArrayList<>();
-            AnxQ1ans.add("Recurrent excessive distress when anticipating or experiencing seperation from home or major attachment figures");
-            AnxQ1ans.add("Persistent and exessive worry about losing a major attachment figure or that possible harm might befall them");
-            AnxQ1ans.add("Persistent and exessive worry about an untoward event that will cause seperation from a major attachment figure");
-            AnxQ1ans.add("Persistent reluctance to go out away from home because of fear of seperation");
-            AnxQ1ans.add("Persistent and exessive fear or reluctance at being alone or without major attachment figure");
+            AnxQ1ans.add("Recurrent excessive distress when anticipating or experiencing separation from home or major attachment figures");
+            AnxQ1ans.add("Persistent and excessive worry about losing a major attachment figure or that possible harm might befall them");
+            AnxQ1ans.add("Persistent and excessive worry about an untoward event that will cause separation from a major attachment figure");
+            AnxQ1ans.add("Persistent reluctance to go out away from home because of fear of separation");
+            AnxQ1ans.add("Persistent and excessive fear or reluctance at being alone or without major attachment figure");
             AnxQ1ans.add("Persistent reluctance or refusal to sleep away from home or without being close to a major attachment figure");
-            AnxQ1ans.add("Repeated nightmares involving the theme of seperation");
-            AnxQ1ans.add("repeated complaints of negative physical symptoms when seperation occurs or is anticipated");
+            AnxQ1ans.add("Repeated nightmares involving the theme of separation");
+            AnxQ1ans.add("Repeated complaints of negative physical symptoms when separation occurs or is anticipated");
             //AnxQ1ans.add("none of the above apply");
             AnxDisA.add(AnxQ1ans);
 
@@ -73,25 +73,25 @@ public class UserModel extends Observable implements Observer {
             AnxDisA.add(AnxQ3ans);
 
             //this question should be combined with others as a general question
-            AnxDisQ.add("Does the Patient suffer from any of the following Disorders");
+            AnxDisQ.add("Does the patient suffer from any of the following disorders");
             ArrayList<String> AnxQ4ans = new ArrayList<>();
             AnxQ4ans.add("Autism");
             AnxQ4ans.add("Delusions or hallucinations");
-            AnxQ4ans.add("Psychotic Disorder");
+            AnxQ4ans.add("Psychotic disorder");
             //under are for social anxiety disorder, as well as autism above
             AnxQ4ans.add("Panic disorder");
-            AnxQ4ans.add("Body Dysmorphic disorder");
+            AnxQ4ans.add("Body dysmorphic disorder");
             //under are for general anxiety disorder
             AnxQ4ans.add("Hyperthyroidism");
             AnxQ4ans.add("Posttraumatic stress");
-            AnxQ4ans.add("Anorexia Nervosa");
-            AnxQ4ans.add("body dysmorphic disorder");
+            AnxQ4ans.add("Anorexia nervosa");
+            AnxQ4ans.add("Body dysmorphic disorder");
             //AnxQ4ans.add("None of the above");
             AnxQ4ans.add("Body dysmorphic disorder");
             AnxQ4ans.add("Schizophrenia");
             AnxQ4ans.add("Obsesive Compulsive Disorder");
             //attributable to all
-            AnxQ4ans.add("drug abuse or medication");
+            AnxQ4ans.add("Drug abuse or medication");
             AnxDisA.add(AnxQ4ans);
 
             //SOCIAL ANXIETY DISORDER
@@ -101,7 +101,7 @@ public class UserModel extends Observable implements Observer {
             AnxQ5ans.add("No");
             AnxDisA.add(AnxQ5ans);
 
-            AnxDisQ.add("The patient fears that they will act in way or show anxiety symptoms that will be negativley evaluated");
+            AnxDisQ.add("The patient fears that they will act in way or show anxiety symptoms that will be negatively evaluated");
             ArrayList<String> AnxQ6ans = new ArrayList<>();
             AnxQ6ans.add("Yes");
             AnxQ6ans.add("No");
@@ -125,7 +125,7 @@ public class UserModel extends Observable implements Observer {
             AnxQ9ans.add("No");
             AnxDisA.add(AnxQ9ans);
 
-            AnxDisQ.add("Does the patient exhibit fear or anxiety unproportional to the threat posed ?");
+            AnxDisQ.add("Does the patient exhibit fear or anxiety unproportional to the threat posed?");
             ArrayList<String> AnxQ10ans = new ArrayList<>();
             AnxQ10ans.add("Yes");
             AnxQ10ans.add("No");
@@ -151,13 +151,13 @@ public class UserModel extends Observable implements Observer {
             AnxDisA.add(AnxQ13ans); //if yes then redirect to selective MUTISM
 
             //Generalized Anxiety Disorder
-            AnxDisQ.add("has the patient showcased excessive anxiety or worry about a number of event more days than not for atleast 6 months?");
+            AnxDisQ.add("Has the patient showcased excessive anxiety or worry about a number of event more days than not for at least 6 months?");
             ArrayList<String> AnxQ14ans = new ArrayList<>();
             AnxQ14ans.add("Yes");
             AnxQ14ans.add("No");
             AnxDisA.add(AnxQ14ans);
 
-            AnxDisQ.add("does the patient find it difficult to control the worry?");
+            AnxDisQ.add("Does the patient find it difficult to control the worry?");
             ArrayList<String> AnxQ15ans = new ArrayList<>();
             AnxQ15ans.add("Yes");
             AnxQ15ans.add("No");
@@ -168,12 +168,13 @@ public class UserModel extends Observable implements Observer {
             AnxQ16ans.add("Continuous feelings of restlessness or being on the edge");
             AnxQ16ans.add("Being easily fatigued");
             AnxQ16ans.add("Difficulty concentrating or mind going blank");
-            AnxQ16ans.add("irritability");
+            AnxQ16ans.add("Irritability");
             AnxQ16ans.add("Muscle Tension");
             AnxQ16ans.add("Sleep disturbances");
             AnxDisA.add(AnxQ16ans);
 
             //Substance/Medication-induced anxiety Disorder
+            AnxDisQ.add("Does the patient use any of the following substances?");
             ArrayList<String> AnxQ17ans = new ArrayList<>();
             AnxQ17ans.add("Alcohol");
             AnxQ17ans.add("Caffeine");
@@ -202,7 +203,7 @@ public class UserModel extends Observable implements Observer {
             AnxQ19ans.add("The patient has taken medication but the disturbannce has persisted for more than a month after cessation");
             AnxDisA.add(AnxQ19ans);
 
-            AnxDisQ.add("Does the disturbance occur excessivley during states of delerium?");
+            AnxDisQ.add("Does the disturbance occur excessively during states of delerium?");
             ArrayList<String> AnxQ20ans = new ArrayList<>();
             AnxQ20ans.add("Yes");
             AnxQ20ans.add("No");
@@ -236,7 +237,7 @@ public class UserModel extends Observable implements Observer {
             ArrayList<String> MutQ4ans = new ArrayList<>();
             MutQ4ans.add("Is attributable");
             MutQ4ans.add("Is not attributable");
-            MutQ4ans.add("doesn't apply");
+            MutQ4ans.add("Doesn't apply");
             MutismA.add(MutQ4ans);
 
             // ( same as question 4)
@@ -254,26 +255,26 @@ public class UserModel extends Observable implements Observer {
             PhobiaQ.add("Is the patient marked by fear of specific object or situation?");
             ArrayList<String> PhobiaQ1ans = new ArrayList<>();
             PhobiaQ1ans.add("Yes");
-            PhobiaQ1ans.add("NO");
+            PhobiaQ1ans.add("No");
             PhobiaA.add(PhobiaQ1ans);
 
             PhobiaQ.add("Does the phobic object or situation almost always provoke immediate fear or anxiety?");
             ArrayList<String> PhobiaQ2ans = new ArrayList<>();
             PhobiaQ2ans.add("Yes");
-            PhobiaQ2ans.add("NO");
+            PhobiaQ2ans.add("No");
             PhobiaA.add(PhobiaQ2ans);
 
-            PhobiaQ.add("Does the patient activley avoid the the phobic object or situation or endure it with immense fear or anxiety when unavoidable?");
+            PhobiaQ.add("Does the patient actively avoid the the phobic object or situation or endure it with immense fear or anxiety when unavoidable?");
             ArrayList<String> PhobiaQ3ans = new ArrayList<>();
             PhobiaQ3ans.add("Yes");
-            PhobiaQ3ans.add("NO");
+            PhobiaQ3ans.add("No");
             PhobiaA.add(PhobiaQ3ans);
 
             //applies to agoraphobia as well
             PhobiaQ.add("Is the fear or anxiety expressed unproportional to the danger the object or situation poses?");
             ArrayList<String> PhobiaQ4ans = new ArrayList<>();
             PhobiaQ4ans.add("Yes");
-            PhobiaQ4ans.add("NO");
+            PhobiaQ4ans.add("No");
             PhobiaA.add(PhobiaQ4ans);
 
             // (same as Q6) // applies to agoraphobia as well
@@ -289,26 +290,26 @@ public class UserModel extends Observable implements Observer {
             PhobiaQ.add("Has the fear or anxiety persisted for over 6 months?");
             ArrayList<String> PhobiaQ6ans = new ArrayList<>();
             PhobiaQ6ans.add("Yes");
-            PhobiaQ6ans.add("NO");
+            PhobiaQ6ans.add("No");
             PhobiaA.add(PhobiaQ6ans);
 
             // ( similar to question 4)
             PhobiaQ.add("Do any of the following disorders better explain the symptoms portrayed");
             ArrayList<String> PhobiaQ7ans = new ArrayList<>();
-            PhobiaQ7ans.add("Panic symptoms or Agoraphobia");
+            PhobiaQ7ans.add("Panic symptoms or agoraphobia");
             PhobiaQ7ans.add("Obsessive compulsive behaviour");
-            PhobiaQ7ans.add("Posttraumatic stress");
-            PhobiaQ7ans.add("Seperation anxiety");
+            PhobiaQ7ans.add("Post-traumatic stress");
+            PhobiaQ7ans.add("Separation anxiety");
             //below are for agoraphobia as well as OCD and Post traumatic stress and seperation anxiety above
             PhobiaQ7ans.add("Social anxiety");
-            PhobiaQ7ans.add("Body Dysmorphic disorder");
+            PhobiaQ7ans.add("Body dysmorphic disorder");
             //PhobiaQ7ans.add("None of the above");
             PhobiaA.add(PhobiaQ7ans);
 
             PhobiaQ.add("Please specify if any of the following phobic stimuli are present");
             ArrayList<String> PhobiaQ8ans = new ArrayList<>();
             PhobiaQ8ans.add("Animal");
-            PhobiaQ8ans.add("Natural Environment");
+            PhobiaQ8ans.add("Natural environment");
             PhobiaQ8ans.add("Situational");
             PhobiaQ8ans.add("Other");
             PhobiaQ8ans.add("None of the above");
@@ -316,7 +317,7 @@ public class UserModel extends Observable implements Observer {
 
             //Agoraphobia
 
-            PhobiaQ.add("Does the Patient exhibit marked fear or anxiety about the following situatuins");
+            PhobiaQ.add("Does the patient exhibit marked fear or anxiety about the following situations");
             ArrayList<String> PhobiaQ9ans = new ArrayList<>();
             PhobiaQ9ans.add("Using public transportation");
             PhobiaQ9ans.add("Being in open spaces");
@@ -326,7 +327,7 @@ public class UserModel extends Observable implements Observer {
             //PhobiaQ9ans.add("None of the above");
             PhobiaA.add(PhobiaQ9ans);
 
-            PhobiaQ.add("Does the Patient fear or avoid situations because they think escape might be difficult or help might not be available if they should experience debilitating symptoms");
+            PhobiaQ.add("Does the patient fear or avoid situations because they think escape might be difficult or help might not be available if they should experience debilitating symptoms");
             ArrayList<String> PhobiaQ10ans = new ArrayList<>();
             PhobiaQ10ans.add("Yes");
             PhobiaQ10ans.add("No");
@@ -345,11 +346,11 @@ public class UserModel extends Observable implements Observer {
             PhobiaQ12ans.add("Endured with intense fear or anxiety");
             PhobiaA.add(PhobiaQ12ans);
 
-            PhobiaQ.add("Does the patient posess any of the following medical conditions");
+            PhobiaQ.add("If another medical condition is present (e.g. inflammatory bowel disease, Parkinson's disease"
+                    + " the fear, anxiety or avoidance is clearly excessive: ");
             ArrayList<String> PhobiaQ13ans = new ArrayList<>();
-            PhobiaQ13ans.add("Parkinson's disease");
-            PhobiaQ13ans.add("inflammatory bowel disease");
-            PhobiaQ13ans.add("Above conditions are present but the present disturbance is significantly excessive");
+            PhobiaQ13ans.add("Yes");
+            PhobiaQ13ans.add("No");
             //PhobiaQ13ans.add("None of the above");
             PhobiaA.add(PhobiaQ13ans);
         }if (choice == 4) {
@@ -371,10 +372,11 @@ public class UserModel extends Observable implements Observer {
             PanicDisQ1ans.add("Fear of dying");
             PanicDisA.add(PanicDisQ1ans);
 
-            PanicDisQ.add("Has atleast one of the patients panic attacks been followed by a month of one or more of the following symptoms ");
+            PanicDisQ.add("Has at least one of the patients panic attacks been followed by a month of one or more of the following symptoms ");
             ArrayList<String> PanicDisQ2ans = new ArrayList<>();
-            PanicDisQ2ans.add("persistent concern or worry about additional panic attacks or the consequences that follow");
+            PanicDisQ2ans.add("Persistent concern or worry about additional panic attacks or the consequences that follow");
             PanicDisQ2ans.add("Change in behaviour designed to avoid panic attack");
+            PanicDisQ2ans.add("None of the above");
             PanicDisA.add(PanicDisQ2ans);
 
             PanicDisQ.add("Do one of the following conditions more attributable to the physiological effects presented by the patient");
@@ -383,6 +385,7 @@ public class UserModel extends Observable implements Observer {
             PanicDisQ3ans.add("Hyperthyroidism");
             PanicDisQ3ans.add("Cardiopulmonary disorder");
             PanicDisQ3ans.add("Other medical condition");
+            PanicDisQ3ans.add("None of the above");
             //PanicDisQ3ans.add("None of the above");
             PanicDisA.add(PanicDisQ3ans);
 
@@ -393,6 +396,7 @@ public class UserModel extends Observable implements Observer {
             PanicDisQ4ans.add("Obsessions"); //OCD
             PanicDisQ4ans.add("Traumatic event"); //Truama induced anxiety
             PanicDisQ4ans.add("Seperation of attachment figures");//Seperation anxiety
+            PanicDisQ4ans.add("None of the above.");
             PanicDisA.add(PanicDisQ4ans);
             //Panic Attack Specifier
         }

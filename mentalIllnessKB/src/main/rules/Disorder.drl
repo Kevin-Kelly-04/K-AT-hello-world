@@ -1,0 +1,57 @@
+#created on: Dec 15, 2018
+package com.sample
+
+//import com.sample.userChoice
+import Model.UserModel
+import Controller.UserFrame;
+import Controller.UserFrame.Answers;
+
+
+//declare any global variables here
+dialect "java"
+
+rule "Selective Mutism"
+   
+   when
+      $a : Answers (answers contains "Yes1" && 
+      (contains "Education" || contains "Occupation" || contains "Social communication") &&
+       (contains "Yes3") && (contains "Is not attributable") &&
+        (not contains "Autism" && not contains "Delusions or hallucinations" && not contains "Psychotic Disorder" && not contains "Generalized Anxiety disorder"));
+      
+   then
+      System.out.println($a);
+      System.out.println("TESTING");
+      $a.updateIdx();
+        //update( $a );
+end
+
+
+rule "Panic Disorder"
+	when
+		$b : Answers (answers contains "Yes1" && 
+		(contains "Change in behaviour designed to avoid panic attack" || contains "Persistent concern or worry about additional panic attacks or the consequences that follow") &&
+		(contains "None of the above") && (contains "None of the above."))
+	then
+		System.out.println("PANIC DISORDER");
+		$b.updateIdx();
+end
+
+rule "Specific Phobia"
+	when
+		$c : Answers (answers contains "Yes1" && (contains "Yes2") && (contains "Yes3") && (contains "Yes4") &&
+		(contains "Education" || contains "Occupation" || contains "Social circumstance") && (contains "Yes6") &&
+		(contains "Yes7") && (contains "Animal" || contains "Natural environment" || contains "Situational" ||
+		contains "Other"))
+	then
+		System.out.println("SPECIFIC PHOBIA");
+		$c.updateIdx();
+end
+
+rule "Agoraphobia"
+	when
+		$d : Answers (answers contains "Yes9" && contains "Yes10" && contains "Yes11" && contains "Yes12"
+		&& contains "Yes13")
+	then
+		System.out.println("AGORAPHOBIA");
+		$d.updateIdx();
+end
