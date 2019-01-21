@@ -1,3 +1,4 @@
+
 package Model;
 
 import java.util.Observable;
@@ -30,8 +31,8 @@ public class UserModel extends Observable implements Observer {
                 " use the program as a supervisor?");
 
         ArrayList<String> firstQAnswers = new ArrayList<>();
-        firstQAnswers.add("Self-use");
-        firstQAnswers.add("Suprvisor");
+        //firstQAnswers.add("Self-use");
+        firstQAnswers.add("Supervisor");
         answers.add(firstQAnswers);
 
         questions.add("What kind of disorder would you like to be asked about?");
@@ -42,8 +43,7 @@ public class UserModel extends Observable implements Observer {
         secondQAnswers.add("Panic Disorder");
         answers.add(secondQAnswers);
     }
-    public void choiceSelf(int choice) {
-    	// seperation anxiety
+    public void choiceSuper(int choice) {
         if (choice == 1) {
             AnxDisQ.add("Mark the following that applies to the patient concerning their separation from major attachment figures");
             ArrayList<String> AnxQ1ans = new ArrayList<>();
@@ -142,7 +142,7 @@ public class UserModel extends Observable implements Observer {
             ArrayList<String> AnxQ12ans = new ArrayList<>();
             AnxQ12ans.add("Unrelated");
             AnxQ12ans.add("Not unrelated but disturbance is exessive");
-            AnxQ12ans.add("The disturbance is moderate or benign and related to the medical condition");
+            AnxQ12ans.add("The disturbance is moderate and related to the medical condition");
             AnxDisA.add(AnxQ12ans);
 
             AnxDisQ.add("Is the fear, restricted to speaking or performing in public?");
@@ -204,7 +204,7 @@ public class UserModel extends Observable implements Observer {
             AnxQ19ans.add("The patient has taken medication but the disturbannce has persisted for more than a month after cessation");
             AnxDisA.add(AnxQ19ans);
 
-            AnxDisQ.add("Does the disturbance occur excessively during states of delirium?");
+            AnxDisQ.add("Does the disturbance occur excessively during states of delerium?");
             ArrayList<String> AnxQ20ans = new ArrayList<>();
             AnxQ20ans.add("Yes");
             AnxQ20ans.add("No");
@@ -407,7 +407,7 @@ public class UserModel extends Observable implements Observer {
     /*public void choiceSuper() {
     }*/
 
-    public void choiceSuper(int choice) {
+    public void choiceSelf(int choice) {
         System.out.println("Supervising...");
     }
     public void update(Observable observable, Object message) {

@@ -55,7 +55,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
 
         // Create a splitpane which separates the questions from the answers
         splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-        splitPane.setDividerLocation(150);
+        splitPane.setDividerLocation(125);
         splitPane.setTopComponent(questionPanel);
         splitPane.setBottomComponent(answerPanel);
 
@@ -84,6 +84,11 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         // Get the action command and update the answer so that Drools can process the answer
 
         String performedAction = e.getActionCommand();
+        // Restart the program
+        if (performedAction.equals("Start over")) {
+            restart();
+        }
+        // Reformat the questions to which 'Yes' was answered so that it's processable by Drools.
         if (performedAction.equals("Next") && checkboxList != null) {
             if (disease == 1 && index2 == 1) {
                 if (checkboxList.size() >= 4) {
@@ -136,10 +141,11 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
             }
             checkboxList.clear();
         }
+        // Add all the answers to the list of answers
         if (index > 2 && !performedAction.equals("Next")) {
             userModel.addAnswer(performedAction);
         }
-
+        // All questions have been asked, and answers given: run the answers through drools via runDrools()
         if (index2 >= userModel.getQuestions(disease).size()) {
             index2 = 0;
             index = 0;
@@ -148,12 +154,18 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
             text.setText("Diagnosis: " + answers.getString());
             answers.setString("");
             answers.setIdx();
+            answers.answers.clear();
+            userModel.givenAnswers.clear();
+            JButton newButton = new JButton("Start over");
+            newButton.addActionListener(this);
+            newButton.setActionCommand(newButton.getText());
+            newButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+            formatPanel.add(newButton);
             userFrame.repaint();
             userFrame.setVisible(true);
             return;
-
         }
-
+        // Determine the type of user
         if (index == 1) {
             switch(performedAction) {
                 case "Self-use":
@@ -164,32 +176,28 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                     break;
             }
         }
+        // Determine what disease the questions should be about
         if (index == 2) {
             switch(performedAction) {
                 case "Anxiety Disorder":
                     disease = 1;
                     if (this.userType == 0) {
-                        System.out.println("1");
                         this.userModel.choiceSelf(disease);
                     } else {
-                        System.out.println("2");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
                 case "Selective Mutism":
                     disease = 2;
                     if (this.userType == 0) {
-                        System.out.println("3");
                         this.userModel.choiceSelf(disease);
                     } else {
-                        System.out.println("4");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
                 case "Phobia":
                     disease = 3;
                     if (this.userType == 0) {
-                        System.out.println("5");
                         this.userModel.choiceSelf(disease);
                     } else {
                         System.out.println("6");
@@ -199,19 +207,13 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                 case "Panic Disorder":
                     disease = 4;
                     if (this.userType == 0) {
-                        System.out.println("7");
                         this.userModel.choiceSelf(disease);
                     } else {
-                        System.out.println("8");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
             }
         }
-
-
-
-        // Get new question ready on screen
         // Get new question ready on screen
         if (index < 2) {
             text.setText((String)userModel.getQuestions(disease).get(index));
@@ -236,7 +238,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         }
 
         // Update the frame
-        splitPane.setDividerLocation(150);
+        splitPane.setDividerLocation(125);
         userFrame.repaint();
         userFrame.setVisible(true);
         index++;
@@ -245,14 +247,23 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         }
     }
 
+    // Method which creates a new frame with a new model
+    public void restart() {
+        userFrame.dispose();
+        UserModel model = new UserModel();
+        userFrame = new UserFrame(model);
+        userFrame.repaint();
+        userFrame.setVisible(true);
+    }
 
     public void setUserModel(UserModel model) {
         this.userModel = model;
     }
-
+    // Class used to insert into drools
     public class Answers {
         public List<String> answers;
         private String answer;
+        private String diseaseA;
         private int index = 0;
         public void setAnswers(List answers) {
             this.answers = answers;
@@ -275,6 +286,12 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         public String getString() {
             return this.answer;
         }
+        public void setDisease(String diseaseA) {
+            this.diseaseA = diseaseA;
+        }
+        public String getDisease() {
+            return this.diseaseA;
+        }
     }
 
     public void runDrools() {
@@ -286,24 +303,21 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
             // go !
 
             answers.setAnswers(userModel.getGivenAnswers());
+            // Change the 'Yes' answers to easier to process answers
             for (int idx = 0; idx < answers.answers.size(); idx++) {
                 if (answers.answers.get(idx).equals("Yes")) {
                     answers.answers.set(idx, "Yes" + Integer.toString(idx+1));
                 }
             }
-            System.out.println(answers.getAnswers());
             ksession.insert(answers);
             ksession.fireAllRules();
             logger.close();
             setDiagnosis(answers.getIdx());
-
-
         } catch (Throwable t) {
             t.printStackTrace();
         }
-
     }
-
+    // Method that determines the diagnosis based on the output of drools.
     public void setDiagnosis(int index) {
         if (index == 1) {
             if (disease == 2) {
@@ -318,8 +332,36 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                 answers.setString("The patient meets all the requirements for having"
                         + " a panic disorder. Further, extensive research is suggested.");
             }
-
         } else if (index == 0){
+            if (disease == 1) {
+                String diseaseA = answers.getDisease();
+                if (diseaseA == null) {
+                    diseaseA = "a";
+                }
+                switch(diseaseA) {
+                    case "SepAnx":
+                        answers.setString("The patient meets all the requirements for having"
+                                + " separation anxiety disorder. Further, extensive research is suggested.");
+                        break;
+                    case "SocAnx":
+                        answers.setString("The patient meets all the requirements for having"
+                                + " social anxiety disorder. Further, extensive research is suggested.");
+                        break;
+                    case "GenAnx":
+                        answers.setString("The patient meets all the requirements for having"
+                                + " generalized anxiety disorder. Further, extensive research is suggested.");
+                        break;
+                    case "SubstAnx":
+                        answers.setString("The patient meets all the requirements for having"
+                                + " substance/medication anxiety disorder"
+                                + ", or an anxiety disorder related to another"
+                                + " medical condition. Further, extensive research is suggested.");
+                        break;
+                    default: answers.setString("The patient does not meet requirements for any kind of"
+                            + " anxiety disorder. Nothing to be worried about :)!");
+                        break;
+                }
+            }
             if (disease == 2) {
                 answers.setString("The patient does not meet the requirements for having"
                         + " selective mutism. Nothing to be worried about :)!");
@@ -354,7 +396,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
         return kbase;
     }
-
+    // Method to create the JButtons
     public void createJButtons(ArrayList answerlist) {
         for (int idx = 0; idx < answerlist.size(); idx++ ) {
             JButton newButton = new JButton((String)answerlist.get(idx));
@@ -364,7 +406,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
             formatPanel.add(newButton);
         }
     }
-
+    // Method to create the JCheckBoxes
     public void createJCheckBoxes(ArrayList answerlist) {
         for (int idx = 0; idx < answerlist.size(); idx++ ) {
             JCheckBox newCheckbox = new JCheckBox((String)answerlist.get(idx));
@@ -378,7 +420,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         newButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         formatPanel.add(newButton);
     }
-
+    // Checkbox itemEvent handler
     public void itemStateChanged(ItemEvent e) {
         JCheckBox box = (JCheckBox) e.getItem();
         int state = e.getStateChange();
