@@ -340,7 +340,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                 }
             }
             ksession.insert(answers);
-           // System.out.println("yaaaaaa" + userModel.getGivenAnswers());
+            System.out.println("yaaaaaa" + userModel.getGivenAnswers());
             ksession.fireAllRules();
             logger.close();
             setDiagnosis(answers.getIdx());

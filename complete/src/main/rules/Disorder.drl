@@ -37,7 +37,7 @@ rule "Specific Phobia"
 	when
 		$c : Answers (answers contains "Yes1" && (contains "Yes2") && (contains "Yes3") && (contains "Yes4") &&
 		(contains "Education" || contains "Occupation" || contains "Social circumstance") && (contains "Yes6") &&
-		(not contains "Yes7") && (contains "Animal" || contains "Natural environment" || contains "Situational" ||
+		(contains "Yes7") && (not contains "Yes 8") && (contains "Animal" || contains "Natural environment" || contains "Situational" ||
 		contains "Other"))
 	then
 		$c.updateIdx();
