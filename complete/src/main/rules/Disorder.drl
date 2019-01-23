@@ -25,7 +25,9 @@ end
 rule "Panic Disorder"
 	when
 		$b : Answers (answers contains "Yes1" &&
-		(contains "Change in behaviour designed to avoid panic attack" || contains "Persistent concern or worry about additional panic attacks or the consequences that follow") &&
+		(contains "Change in behaviour designed to avoid panic attack" || contains "Persistent concern or worry about additional panic attacks or the consequences that follow" || 
+		contains "Consistently worrying about having another panic attack or the consequences that may follow (e.g. heart attacks, “going crazy”)" ||
+		contains "Changing your behaviour due to the panic attack so as to avoid another (e.g. avoiding unfamiliar situations or exercise") &&
 		(contains "None of the above") && (contains "None of the above."))
 	then
 		$b.updateIdx();
@@ -35,7 +37,7 @@ rule "Specific Phobia"
 	when
 		$c : Answers (answers contains "Yes1" && (contains "Yes2") && (contains "Yes3") && (contains "Yes4") &&
 		(contains "Education" || contains "Occupation" || contains "Social circumstance") && (contains "Yes6") &&
-		(contains "Yes7") && (contains "Animal" || contains "Natural environment" || contains "Situational" ||
+		(not contains "Yes7") && (contains "Animal" || contains "Natural environment" || contains "Situational" ||
 		contains "Other"))
 	then
 		$c.updateIdx();
@@ -59,24 +61,26 @@ end
 
 rule "Social Anxiety Disorder"
 	when
-		$f : Answers (answers contains "Yes5" && contains "Yes6" && contains "Yes7" && contains "Yes8" && contains "Yes9" && not contains "Yes10" &&
-		not contains "Yes13" && not contains "The disturbance is moderate or benign and related to the medical condition");
+		$f : Answers (answers contains "Yes5" && contains "Yes6" && contains "Yes7" && contains "Yes8" && contains "Yes9" && not contains "Yes10" && 
+		contains "Yes13" && not contains "The disturbance is moderate or benign and related to the medical condition");
 	then
 		$f.setDisease("SocAnx");
 end
 
 rule "Generalized Anxiety Disorder"
 	when
-		$g : Answers (answers contains "Yes14" && contains "Yes15" && contains "Yes16");
+		$g : Answers (answers contains "Yes14" && contains "Yes15");
 	then
 		$g.setDisease("GenAnx");
 end
 
 rule "Substance/Medication-induced anxiety Disorder"
 	when
-		$h : Answers (answers (contains "Yes17" && contains "Yes18" &&
-	 	not contains "The patient is on medication but the symptoms preceded its start" && not contains "The patient has taken medication but the disturbannce has persisted for more than a month after cessation")
-	  	|| contains "Yes20");
+		$h : Answers (answers ( (contains "Yes16"  || contains "Yes10") && contains "Yes17" &&
+	 	not contains "The patient is on medication but the symptoms preceded its start" && not contains "The patient has taken medication but the disturbannce has persisted for more than a month after cessation" 
+	 	&& not contains "None of the above apply to the patients situation" && not contains "You are on medication but the symptoms you are experiencing came before you startd taking them"
+	 	&& not contains "You have been on medication but the symptoms have continued for over a month after you stopped taking them" && not contains "None of the above apply for your situation")
+	  	|| contains "Yes19");
 	then
 		$h.setDisease("SubstAnx");
 end

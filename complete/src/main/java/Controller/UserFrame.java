@@ -23,11 +23,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Desktop;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 
 public class UserFrame extends JFrame implements ActionListener, ItemListener {
     private static final long serialVersionUID = 1L;
@@ -41,6 +46,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
     private int disease = 0;
     private int index = 0;
     private int index2 = 0;
+    private int index3 = 0;
     private int userType;
     private ArrayList listAnswers;
     public ArrayList<String> checkboxList = new ArrayList<>();
@@ -82,12 +88,28 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
 
     public void actionPerformed(ActionEvent e) {
         // Get the action command and update the answer so that Drools can process the answer
-
+    	System.out.println(index2);
         String performedAction = e.getActionCommand();
         // Restart the program
+        
         if (performedAction.equals("Start over")) {
+        	System.out.println("4");
             restart();
         }
+        
+        if (performedAction.equals("Get help")){
+        	try {
+                
+                Desktop.getDesktop().browse(new URI("https://www.google.com/maps/search/psychiatrist"));
+                 
+            } catch (IOException | URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+        	restart();
+        }
+  
+        
+      
         // Reformat the questions to which 'Yes' was answered so that it's processable by Drools.
         if (performedAction.equals("Next") && checkboxList != null) {
             if (disease == 1 && index2 == 1) {
@@ -102,13 +124,13 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                 } else {
                     userModel.addAnswer("No");
                 }
-            } else if (disease == 1 && index2 == 16) {
+            } else if (disease == 1 && index2 == 15) {
                 if (checkboxList.size() >= 3) {
                     userModel.addAnswer("Yes" + Integer.toString(index2));
                 } else {
                     userModel.addAnswer("No");
                 }
-            } else if (disease == 1 && index2 == 17) {
+            } else if (disease == 1 && index2 == 16) {
                 if (checkboxList.size() >= 1) {
                     userModel.addAnswer("Yes" + Integer.toString(index2));
                 } else {
@@ -160,6 +182,13 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
             newButton.addActionListener(this);
             newButton.setActionCommand(newButton.getText());
             newButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+            if(index3 == 2) {
+            JButton Button = new JButton("Get help");
+            Button.addActionListener(this);
+            Button.setActionCommand(Button.getText());
+            Button.setAlignmentX(Component.LEFT_ALIGNMENT);
+            formatPanel.add(Button);
+            }
             formatPanel.add(newButton);
             userFrame.repaint();
             userFrame.setVisible(true);
@@ -181,6 +210,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
             switch(performedAction) {
                 case "Anxiety Disorder":
                     disease = 1;
+                    System.out.println(this.userType);
                     if (this.userType == 0) {
                         this.userModel.choiceSelf(disease);
                     } else {
@@ -200,7 +230,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                     if (this.userType == 0) {
                         this.userModel.choiceSelf(disease);
                     } else {
-                        System.out.println("6");
+                       // System.out.println("6");
                         this.userModel.choiceSuper(disease);
                     }
                     break;
@@ -229,7 +259,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
         }
 
         // Create the corresponding new buttons with the new question
-        if ((disease == 1 && (index2 == 0 || index2 == 3 || index2 == 15 || index2 == 16)) ||
+        if ((disease == 1 && (index2 == 0 || index2 == 3 || index2 == 14 || index2 == 15)) ||
                 (disease == 3 && (index2 == 6 || index2 == 8 || index2 == 11))
                 || (disease == 4 && (index2 == 0))) {
             createJCheckBoxes(listAnswers);
@@ -310,6 +340,7 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
                 }
             }
             ksession.insert(answers);
+           // System.out.println("yaaaaaa" + userModel.getGivenAnswers());
             ksession.fireAllRules();
             logger.close();
             setDiagnosis(answers.getIdx());
@@ -317,67 +348,134 @@ public class UserFrame extends JFrame implements ActionListener, ItemListener {
             t.printStackTrace();
         }
     }
+    
     // Method that determines the diagnosis based on the output of drools.
     public void setDiagnosis(int index) {
         if (index == 1) {
-            if (disease == 2) {
+            if (disease == 2 && userType == 1) {
+            	index3 = 2;
                 answers.setString("The patient meets all the requirements for having"
-                        + " selective mutism. Further, extensive research is suggested.");
+                        + " selective mutism. Proper treatment and further, extensive research is suggested.");
             }
-            if (disease == 3) {
-                answers.setString("The patient meets all the requirements for having"
-                        + " a specific phobia. Further, extensive research is suggested.");
+            if (disease == 2 && userType == 0) {
+            	index3 = 2;
+                answers.setString("You fit the criteria for being diagnosed with"
+                        + " selective mutism. We reccomend you seek help in the form of a psychiatrist.");
             }
-            if (disease == 4) {
+            if (disease == 3 && userType == 1) {
+            	index3 = 2;
                 answers.setString("The patient meets all the requirements for having"
-                        + " a panic disorder. Further, extensive research is suggested.");
+                        + " a specific phobia. Proper treatment and further, extensive research is suggested.");
+            }
+            if (disease == 3 && userType == 0) {
+            	index3 = 2;
+                answers.setString("You fit the criteria for being diagnosed with"
+                        + " a specific phobia. We reccomend you seek help in the form of a psychiatrist.");
+            }
+            if (disease == 4 && userType == 1) {
+            	index3 = 2;
+                answers.setString("The patient meets all the requirements for having"
+                        + " a panic disorder. Proper treatment and further, extensive research is suggested.");
+            }
+            if (disease == 4 && userType == 0) {
+            	index3 = 2;
+                answers.setString("You fit the criteria for being diagnosed with"
+                        + " a panic disorder. We reccomend you seek help in the form of a psychiatrist.");
             }
         } else if (index == 0){
-            if (disease == 1) {
+            if (disease == 1 && userType == 1) {
                 String diseaseA = answers.getDisease();
                 if (diseaseA == null) {
                     diseaseA = "a";
                 }
                 switch(diseaseA) {
                     case "SepAnx":
+                    	index3 = 2;
                         answers.setString("The patient meets all the requirements for having"
-                                + " separation anxiety disorder. Further, extensive research is suggested.");
+                                + " separation anxiety disorder. Proper treatment and further, extensive research is suggested.");
                         break;
                     case "SocAnx":
+                    	index3 = 2;
                         answers.setString("The patient meets all the requirements for having"
-                                + " social anxiety disorder. Further, extensive research is suggested.");
+                                + " social anxiety disorder.  Proper treatment and further, extensive research is suggested.");
                         break;
                     case "GenAnx":
+                    	index3 = 2;
                         answers.setString("The patient meets all the requirements for having"
-                                + " generalized anxiety disorder. Further, extensive research is suggested.");
+                                + " generalized anxiety disorder.  Proper treatment and further, extensive research is suggested.");
                         break;
                     case "SubstAnx":
+                    	index3 = 2;
                         answers.setString("The patient meets all the requirements for having"
                                 + " substance/medication anxiety disorder"
                                 + ", or an anxiety disorder related to another"
-                                + " medical condition. Further, extensive research is suggested.");
+                                + " medical condition.  Proper treatment and further, extensive research is suggested.");
                         break;
                     default: answers.setString("The patient does not meet requirements for any kind of"
                             + " anxiety disorder. Nothing to be worried about :)!");
                         break;
                 }
             }
-            if (disease == 2) {
+            if (disease == 1 && userType == 0) {
+                String diseaseA = answers.getDisease();
+                if (diseaseA == null) {
+                    diseaseA = "a";
+                }
+                switch(diseaseA) {
+                    case "SepAnx":
+                    	index3 = 2;
+                        answers.setString("You fit the criteria for being diagnosed with"
+                                + " separation anxiety disorder. We reccomend you seek help in the form of a psychiatrist.");
+                        break;
+                    case "SocAnx":
+                    	index3 = 2;
+                        answers.setString("You fit the criteria for being diagnosed with"
+                                + " social anxiety disorder.  We reccomend you seek help in the form of a psychiatrist.");
+                        break;
+                    case "GenAnx":
+                    	index3 = 2;
+                        answers.setString("You fit the criteria for being diagnosed with"
+                                + " generalized anxiety disorder. We reccomend you seek help in the form of a psychiatrist.");
+                        break;
+                    case "SubstAnx":
+                    	index3 = 2;
+                        answers.setString("You fit the criteria for being diagnosed with"
+                                + " substance/medication anxiety disorder"
+                                + ", or an anxiety disorder related to another"
+                                + " medical condition. We reccomend you seek help in the form of a psychiatrist.");
+                        break;
+                    default: answers.setString("You do not meet the requirements for having any kind of"
+                            + " anxiety disorder. However if you feel like something is wrong it is always better to seek help from a professional!");
+                        break;
+                }
+            }
+            if (disease == 2 && userType == 1) {
                 answers.setString("The patient does not meet the requirements for having"
                         + " selective mutism. Nothing to be worried about :)!");
             }
+            if (disease == 2 && userType == 0) {
+                answers.setString("You do not meet the requirements for having"
+                        + " selective mutism. However if you feel like something is wrong it is always better to seek help from a professional!");
+            }
             if (disease == 3) {
-                answers.setString("The patient does not meet the requirements for having"
-                        + " a specific phobia or agoraphobia. Nothing to be worried about :)!");
+                answers.setString("You do not meet the requirements for having"
+                        + " a specific phobia or agoraphobia. However if you feel like something is wrong it is always better to seek help from a professional!");
             }
             if (disease == 4) {
-                answers.setString("The patient does not meet the requirements for having"
-                        + " a panic disorder. Nothing to be worried about :)!");
+                answers.setString("You do not meet the requirements for having"
+                        + " a panic disorder. However if you feel like something is wrong it is always better to seek help from a professional");
             }
-        } else if (index == 2) {
+        } else if (index == 2 && userType == 1) {
             if (disease == 2) {
+            	index3 = 2;
                 answers.setString("The patient meets all the requirements for having"
                         + " agoraphobia. Further, extensive research is suggested.");
+            }
+        }  else if (index == 2 && userType == 0) {
+            if (disease == 2) {
+            	index3 = 2;
+                answers.setString("You fit the criteria for being diagnosed with"
+                        + " agoraphobia. We reccomend you seek help in the form of a psychiatrist.");
             }
         }
     }

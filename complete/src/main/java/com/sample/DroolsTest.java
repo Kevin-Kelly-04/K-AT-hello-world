@@ -17,18 +17,18 @@ import com.sample.userChoice.Choice;
 
 import Controller.UserFrame;
 import Model.UserModel;
+import java.awt.Desktop;
+import java.net.URI;
 /**
  * This is a sample class to launch a rule.
  */
 public class DroolsTest {
     public static UserModel model;
-    public static final void main(String[] args) {
+    public static final void main(String[] args) throws Exception {
         model = new UserModel();
         UserFrame frame = new UserFrame(model);
 
+
         //System.out.println(model.getGivenAnswers());
     }
-
-
-
 }

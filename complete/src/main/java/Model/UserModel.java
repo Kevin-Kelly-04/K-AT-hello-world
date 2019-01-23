@@ -31,7 +31,7 @@ public class UserModel extends Observable implements Observer {
                 " use the program as a supervisor?");
 
         ArrayList<String> firstQAnswers = new ArrayList<>();
-        //firstQAnswers.add("Self-use");
+        firstQAnswers.add("Self-use");
         firstQAnswers.add("Supervisor");
         answers.add(firstQAnswers);
 
@@ -102,7 +102,7 @@ public class UserModel extends Observable implements Observer {
             AnxQ5ans.add("No");
             AnxDisA.add(AnxQ5ans);
 
-            AnxDisQ.add("The patient fears that they will act in way or show anxiety symptoms that will be negatively evaluated");
+            AnxDisQ.add("The patient fears that they will act in a way or show anxiety symptoms that will be negatively evaluated");
             ArrayList<String> AnxQ6ans = new ArrayList<>();
             AnxQ6ans.add("Yes");
             AnxQ6ans.add("No");
@@ -114,12 +114,12 @@ public class UserModel extends Observable implements Observer {
             AnxQ7ans.add("No");
             AnxDisA.add(AnxQ7ans);
 
-            AnxDisQ.add("Does the patient activley avoid social situations or endure it with immense fear or anxiety?");
+            /*AnxDisQ.add("Does the patient activley avoid social situations or endure it with immense fear or anxiety?");
             ArrayList<String> AnxQ8ans = new ArrayList<>();
             AnxQ8ans.add("Yes");
             AnxQ8ans.add("No");
             AnxDisA.add(AnxQ8ans);
-
+			*/
             AnxDisQ.add("Does the patient activley avoid social situations or endure it with immense fear or anxiety?");
             ArrayList<String> AnxQ9ans = new ArrayList<>();
             AnxQ9ans.add("Yes");
@@ -152,7 +152,7 @@ public class UserModel extends Observable implements Observer {
             AnxDisA.add(AnxQ13ans); //if yes then redirect to selective MUTISM
 
             //Generalized Anxiety Disorder
-            AnxDisQ.add("Has the patient showcased excessive anxiety or worry about a number of event more days than not for at least 6 months?");
+            AnxDisQ.add("Has the patient showcased excessive anxiety or worry about a number of events more days than not for at least 6 months?");
             ArrayList<String> AnxQ14ans = new ArrayList<>();
             AnxQ14ans.add("Yes");
             AnxQ14ans.add("No");
@@ -202,6 +202,7 @@ public class UserModel extends Observable implements Observer {
             AnxQ19ans.add("The patient is taking a substance/medication that is capable of producing anxiety symptoms ");
             AnxQ19ans.add("The patient is on medication but the symptoms preceded its start");
             AnxQ19ans.add("The patient has taken medication but the disturbannce has persisted for more than a month after cessation");
+            AnxQ19ans.add("None of the above apply to the patients situation");
             AnxDisA.add(AnxQ19ans);
 
             AnxDisQ.add("Does the disturbance occur excessively during states of delerium?");
@@ -408,8 +409,362 @@ public class UserModel extends Observable implements Observer {
     }*/
 
     public void choiceSelf(int choice) {
-        System.out.println("Supervising...");
+        if (choice == 1) {
+            AnxDisQ.add("Please mark all of the following that apply to you");
+            ArrayList<String> AnxQ1ans = new ArrayList<>();
+            AnxQ1ans.add("Do you feel recurring or excessive distress when you are away from home or those you are very close to");
+            AnxQ1ans.add("Do you consistently worry about losing or harm coming to those you are close to. e.g. llness, injury, disasters, death");
+            AnxQ1ans.add("do you consistently worry about an incident occurring to you which could separate you from those you are close to e.g. getting lost, kidnapped or ill");
+            AnxQ1ans.add("Do you consistently avoid or refuse to go outside (work, school etc.) due to a fear of being separated from those you are close to ");
+            AnxQ1ans.add("Do you experience fear or reluctance to being alone, without those you are close to");
+            AnxQ1ans.add("Do you find it hard (or refuse) to sleep without those you have an attachment to being close by");
+            AnxQ1ans.add("Do you experience repeated nightmares involving separation");
+            AnxQ1ans.add("Do you have any repeated physical symptoms (e.g headaches, nausea etc.) when separation from those you are close to occurs or is anticipated");
+            //AnxQ1ans.add("none of the above apply");
+            AnxDisA.add(AnxQ1ans);
+
+            //4 weeks in children, 6 months in adults for both seperation anxiety and social anxiety
+            AnxDisQ.add("How long have you been experiencing your symptoms?");
+            ArrayList<String> AnxQ2ans = new ArrayList<>();
+            AnxQ2ans.add("less than 4 weeks");
+            AnxQ2ans.add("4 weeks or more");
+            AnxQ2ans.add("6 months or more");
+            AnxDisA.add(AnxQ2ans);
+
+            //relevant to social anxiety disorder as well
+            AnxDisQ.add("Have your symptoms caused problems in your social, academic or work life?");
+            ArrayList<String> AnxQ3ans = new ArrayList<>();
+            AnxQ3ans.add("Yes");
+            AnxQ3ans.add("No");
+            AnxDisA.add(AnxQ3ans);
+
+            //this question should be combined with others as a general question
+            AnxDisQ.add("Are any of the following disorders attributable to your symptoms");
+            ArrayList<String> AnxQ4ans = new ArrayList<>();
+            AnxQ4ans.add("Autism");
+            AnxQ4ans.add("Delusions or hallucinations");
+            AnxQ4ans.add("Psychotic disorder");
+            //under are for social anxiety disorder, as well as autism above
+            AnxQ4ans.add("Panic disorder");
+            AnxQ4ans.add("Body dysmorphic disorder");
+            //under are for general anxiety disorder
+            AnxQ4ans.add("Hyperthyroidism");
+            AnxQ4ans.add("Posttraumatic stress");
+            AnxQ4ans.add("Anorexia nervosa");
+            AnxQ4ans.add("Body dysmorphic disorder");
+            //AnxQ4ans.add("None of the above");
+            AnxQ4ans.add("Body dysmorphic disorder");
+            AnxQ4ans.add("Schizophrenia");
+            AnxQ4ans.add("Obsesive Compulsive Disorder");
+            //attributable to all
+            AnxQ4ans.add("Drug abuse or medication");
+            AnxDisA.add(AnxQ4ans);
+
+            //SOCIAL ANXIETY DISORDER
+            AnxDisQ.add("Do you feel fear or anxiety when in a social situation where there is a possibility of being judged or made fun of E.g social interactions, being observed  in public, or performing in front of others");
+            ArrayList<String> AnxQ5ans = new ArrayList<>();
+            AnxQ5ans.add("Yes");
+            AnxQ5ans.add("No");
+            AnxDisA.add(AnxQ5ans);
+
+            AnxDisQ.add("Do you fear that the symptoms of your anxiety may cause you to act in a way that will lead to embarrassment, rejection or cause you to offend someone");
+            ArrayList<String> AnxQ6ans = new ArrayList<>();
+            AnxQ6ans.add("Yes");
+            AnxQ6ans.add("No");
+            AnxDisA.add(AnxQ6ans);
+
+            AnxDisQ.add("Do you almost always experience fear or anxiety in social situations");
+            ArrayList<String> AnxQ7ans = new ArrayList<>();
+            AnxQ7ans.add("Yes");
+            AnxQ7ans.add("No");
+            AnxDisA.add(AnxQ7ans);
+
+            /*AnxDisQ.add("Do you activley avoid social situations in order to escape feelings of fear or anxiety they might cause?");
+            ArrayList<String> AnxQ8ans = new ArrayList<>();
+            AnxQ8ans.add("Yes");
+            AnxQ8ans.add("No");
+            AnxDisA.add(AnxQ8ans);
+			*/
+            AnxDisQ.add("Do you actively avoid social situations in order to escape feelings of fear or anxiety they might cause?");
+            ArrayList<String> AnxQ9ans = new ArrayList<>();
+            AnxQ9ans.add("Yes");
+            AnxQ9ans.add("No");
+            AnxDisA.add(AnxQ9ans);
+
+            AnxDisQ.add("Is the fear or anxiety caused by the social situation is greater then the actual threat posed by the situation?");
+            ArrayList<String> AnxQ10ans = new ArrayList<>();
+            AnxQ10ans.add("Yes");
+            AnxQ10ans.add("No");
+            AnxDisA.add(AnxQ10ans);
+
+            AnxDisQ.add("Are you currently under medication that might be causing these symptoms?");
+            ArrayList<String> AnxQ11ans = new ArrayList<>();
+            AnxQ11ans.add("Yes");
+            AnxQ11ans.add("No");
+            AnxDisA.add(AnxQ11ans);
+            
+            AnxDisQ.add("If you are using medication, are the symptoms clearly unrelated to these, or are the symptoms clearly excessive");
+            ArrayList<String> AnxQ12ans = new ArrayList<>();
+            AnxQ12ans.add("Unrelated");
+            AnxQ12ans.add("Not unrelated but disturbance is exessive");
+            AnxQ12ans.add("The disturbance is moderate and related to the medical condition");
+            AnxDisA.add(AnxQ12ans);
+
+            AnxDisQ.add("Are your worries and fears restricted to speaking or performing in public?");
+            ArrayList<String> AnxQ13ans = new ArrayList<>();
+            AnxQ13ans.add("Yes");
+            AnxQ13ans.add("No");
+            AnxDisA.add(AnxQ13ans); //if yes then redirect to selective MUTISM
+
+            //Generalized Anxiety Disorder
+            AnxDisQ.add("Have you been expressing anxiety or worry more days then not in a 6 month period, due to a number of events such as work, school etc..?");
+            ArrayList<String> AnxQ14ans = new ArrayList<>();
+            AnxQ14ans.add("Yes");
+            AnxQ14ans.add("No");
+            AnxDisA.add(AnxQ14ans);
+
+            AnxDisQ.add("Do you find it difficult to control your worry?");
+            ArrayList<String> AnxQ15ans = new ArrayList<>();
+            AnxQ15ans.add("Yes");
+            AnxQ15ans.add("No");
+            AnxDisA.add(AnxQ15ans);
+
+            AnxDisQ.add("Do you experience the following symptoms in combination with your worries?");
+            ArrayList<String> AnxQ16ans = new ArrayList<>();
+            AnxQ16ans.add("Feeling restless or on edge");
+            AnxQ16ans.add("Getting easily tired");
+            AnxQ16ans.add("Having difficulty concentrating or finding your mind has gone blank");
+            AnxQ16ans.add("Being easily irritated");
+            AnxQ16ans.add("Having muscle tensions");
+            AnxQ16ans.add("Disruption/ disturbance in your sleeping pattern (difficulty falling / staying asleep, or restless/ unsatisfying sleep)");
+            AnxDisA.add(AnxQ16ans);
+
+            //Substance/Medication-induced anxiety Disorder
+            AnxDisQ.add("Do you use any of the following substances in exaggeration?");
+            ArrayList<String> AnxQ17ans = new ArrayList<>();
+            AnxQ17ans.add("Alcohol");
+            AnxQ17ans.add("Caffeine");
+            AnxQ17ans.add("Cannabis");
+            AnxQ17ans.add("PhenCyclidine");
+            AnxQ17ans.add("Other hallucinogen");
+            AnxQ17ans.add("Inhalants");
+            AnxQ17ans.add("Opioids");
+            AnxQ17ans.add("Sedative, hypnotic or anxiolytic substances");
+            AnxQ17ans.add("Amphetamines or other stimulants");
+            AnxQ17ans.add("Cocaine");
+            AnxQ17ans.add("Other or unknown substances");
+            AnxDisA.add(AnxQ17ans);
+
+            AnxDisQ.add("Does your anxiety mainly occur in medical situations?");
+            ArrayList<String> AnxQ18ans = new ArrayList<>();
+            AnxQ18ans.add("Yes");
+            AnxQ18ans.add("No");
+            AnxDisA.add(AnxQ18ans);
+
+            AnxDisQ.add("If you have any history of substance abuse either medication or narcotics, please select the following that apply?");
+            ArrayList<String> AnxQ19ans = new ArrayList<>();
+            AnxQ19ans.add("Your symptoms developed soon after a substance intoxication or withdrawal after exposure to a medication");
+            AnxQ19ans.add("You are taking a substance/medication that is capable of producing anxiety symptoms ");
+            AnxQ19ans.add("You are on medication but the symptoms you are experiencing came before you startd taking them");
+            AnxQ19ans.add("You have been on medication but the symptoms have continued for over a month after you stopped taking them");
+            AnxQ19ans.add("None of the above apply for your situation");
+            AnxDisA.add(AnxQ19ans);
+
+           
+        }if (choice == 2) {
+            //Anxiety due to other medical conditions is same questions as above except the substance question
+
+            //Selective Mutism
+            MutismQ.add("Do you have a lot of difficulties speaking in certain social situations (e.g. school) whilst being able to speak normally in others");
+            ArrayList<String> MutQ1ans = new ArrayList<>();
+            MutQ1ans.add("Yes");
+            MutQ1ans.add("No");
+            MutismA.add(MutQ1ans);
+
+            // (similar to question 3)
+            MutismQ.add("Do you feel that your diffuclty of speech negativley affects any of the following");
+            ArrayList<String> MutQ2ans = new ArrayList<>();
+            MutQ2ans.add("Education");
+            MutQ2ans.add("Occupation");
+            MutQ2ans.add("Social communication");
+            MutQ2ans.add("None of the above");
+            MutismA.add(MutQ2ans);
+            // (similar to question 2)
+            MutismQ.add("Have you been experiencing this problem for over a month?");
+            ArrayList<String> MutQ3ans = new ArrayList<>();
+            MutQ3ans.add("Yes");
+            MutQ3ans.add("No");
+            MutismA.add(MutQ3ans);
+
+            MutismQ.add("Is your failure to speak due to lack of knowledge of the topic or language");
+            ArrayList<String> MutQ4ans = new ArrayList<>();
+            MutQ4ans.add("Is attributable");
+            MutQ4ans.add("Is not attributable");
+            MutQ4ans.add("Doesn't apply");
+            MutismA.add(MutQ4ans);
+
+            // ( same as question 4)
+            MutismQ.add("Are any of the following disorders attributable to your symptoms");
+            ArrayList<String> MutQ5ans = new ArrayList<>();
+            MutQ5ans.add("Autism");
+            MutQ5ans.add("Delusions or hallucinations");
+            MutQ5ans.add("Psychotic Disorder");
+            MutQ5ans.add("Generalized Anxiety disorder");
+            MutQ5ans.add("None of the above");
+            MutismA.add(MutQ5ans);
+
+        } if (choice == 3) {
+            //SPECIFIC PHOBIA
+            PhobiaQ.add("Do you find yourself scared or anxious about a specific object or situation (e.g flying, seeing blood, injections, heights, animals etc)?");
+            ArrayList<String> PhobiaQ1ans = new ArrayList<>();
+            PhobiaQ1ans.add("Yes");
+            PhobiaQ1ans.add("No");
+            PhobiaA.add(PhobiaQ1ans);
+
+            PhobiaQ.add("Does this situation or object almost always cause a feeling of fear or anxiety in you when faced");
+            ArrayList<String> PhobiaQ2ans = new ArrayList<>();
+            PhobiaQ2ans.add("Yes");
+            PhobiaQ2ans.add("No");
+            PhobiaA.add(PhobiaQ2ans);
+
+            PhobiaQ.add("Do you activately avoid the situation or object, and in the times when that is not possible you feel anxious and scared ?");
+            ArrayList<String> PhobiaQ3ans = new ArrayList<>();
+            PhobiaQ3ans.add("Yes");
+            PhobiaQ3ans.add("No");
+            PhobiaA.add(PhobiaQ3ans);
+
+            //applies to agoraphobia as well
+            PhobiaQ.add("Is the level of fear or anxiety inproportional to the actual danger from the specific object or situation?");
+            ArrayList<String> PhobiaQ4ans = new ArrayList<>();
+            PhobiaQ4ans.add("Yes");
+            PhobiaQ4ans.add("No");
+            PhobiaA.add(PhobiaQ4ans);
+
+            // (same as Q6) // applies to agoraphobia as well
+            PhobiaQ.add("Do you feel that your diffuclties affects any of the following");
+            ArrayList<String> PhobiaQ5ans = new ArrayList<>();
+            PhobiaQ5ans.add("Education");
+            PhobiaQ5ans.add("Occupation");
+            PhobiaQ5ans.add("Social circumstance");
+            PhobiaQ5ans.add("None of the above");
+            PhobiaA.add(PhobiaQ5ans);
+
+            // (same as question 6) // applies to agoraphobia as well
+            PhobiaQ.add("Has the fear or anxiety you've experienced about the situation or object lasted for more than 6 months?");
+            ArrayList<String> PhobiaQ6ans = new ArrayList<>();
+            PhobiaQ6ans.add("Yes");
+            PhobiaQ6ans.add("No");
+            PhobiaA.add(PhobiaQ6ans);
+
+            // ( similar to question 4)
+            PhobiaQ.add("Do any of the following disorders better explain the symptoms you suffer from");
+            ArrayList<String> PhobiaQ7ans = new ArrayList<>();
+            PhobiaQ7ans.add("Panic symptoms");
+            PhobiaQ7ans.add("Obsessive compulsive behaviour");
+            PhobiaQ7ans.add("Post-traumatic stress");
+            PhobiaQ7ans.add("Separation anxiety");
+            //below are for agoraphobia as well as OCD and Post traumatic stress and seperation anxiety above
+            PhobiaQ7ans.add("Social anxiety");
+            PhobiaQ7ans.add("Body dysmorphic disorder");
+            //PhobiaQ7ans.add("None of the above");
+            PhobiaA.add(PhobiaQ7ans);
+
+            PhobiaQ.add("Please specify if any of the following is a phobia you suffer from");
+            ArrayList<String> PhobiaQ8ans = new ArrayList<>();
+            PhobiaQ8ans.add("Animal");
+            PhobiaQ8ans.add("Natural environment");
+            PhobiaQ8ans.add("Situational");
+            PhobiaQ8ans.add("Other");
+            PhobiaQ8ans.add("None of the above");
+            PhobiaA.add(PhobiaQ8ans);
+
+            //Agoraphobia
+
+            PhobiaQ.add("do you experience fear or anxiety about any of the following situations");
+            ArrayList<String> PhobiaQ9ans = new ArrayList<>();
+            PhobiaQ9ans.add("Using public transportation");
+            PhobiaQ9ans.add("Being in open spaces");
+            PhobiaQ9ans.add("Being in enclosed spaces");
+            PhobiaQ9ans.add("Standing in line or being in a crowd");
+            PhobiaQ9ans.add("Being outside of the home alone");
+            //PhobiaQ9ans.add("None of the above");
+            PhobiaA.add(PhobiaQ9ans);
+
+            PhobiaQ.add("Do you fear or avoid these situations due to a belief that if you show panic-like symptoms (or other incapacitating or embarrassing symptoms) that escape from the situation may be difficult or help may not be available");
+            ArrayList<String> PhobiaQ10ans = new ArrayList<>();
+            PhobiaQ10ans.add("Yes");
+            PhobiaQ10ans.add("No");
+            PhobiaA.add(PhobiaQ10ans);
+
+            PhobiaQ.add("Do you find commonplace situations to be unsafe and fear that escaping them will be difficult");
+            ArrayList<String> PhobiaQ11ans = new ArrayList<>();
+            PhobiaQ11ans.add("Yes");
+            PhobiaQ11ans.add("No");
+            PhobiaA.add(PhobiaQ11ans);
+
+            PhobiaQ.add("Do these types of situations cause any of the following in your behaviour");
+            ArrayList<String> PhobiaQ12ans = new ArrayList<>();
+            PhobiaQ12ans.add("Avoidance");
+            PhobiaQ12ans.add("Need of a companion");
+            PhobiaQ12ans.add("Endured with intense fear or anxiety");
+            PhobiaA.add(PhobiaQ12ans);
+
+            PhobiaQ.add("If you suffer from medical condition (e.g. inflammatory bowel disease, Parkinson's disease)"
+                    + " the fear, anxiety or avoidance you experience is still exaggerated");
+            ArrayList<String> PhobiaQ13ans = new ArrayList<>();
+            PhobiaQ13ans.add("Yes");
+            PhobiaQ13ans.add("No");
+            //PhobiaQ13ans.add("None of the above");
+            PhobiaA.add(PhobiaQ13ans);
+        }if (choice == 4) {
+            //Panic Disorder
+            PanicDisQ.add("Do you experience sudden and recurring states of intense fear or intense discomfort that are followed by any of the following symptoms ");
+            ArrayList<String> PanicDisQ1ans = new ArrayList<>();
+            PanicDisQ1ans.add("Pounding heart, accelerated heart rate or heart palpatations");
+            PanicDisQ1ans.add("Sweating");
+            PanicDisQ1ans.add("Trembling or Shaking");
+            PanicDisQ1ans.add("Shortness of breath or sensation of Smothering");
+            PanicDisQ1ans.add("Feelings of chocking");
+            PanicDisQ1ans.add("Chest pain or discomfort");
+            PanicDisQ1ans.add("Nausea or abdominal distress");
+            PanicDisQ1ans.add("Feeling dizzy, unsteady, lightheaded or faint");
+            PanicDisQ1ans.add("Chills or heat sensations");
+            PanicDisQ1ans.add("Numbing or tingling sensations through your body");//numbness or tingling
+            PanicDisQ1ans.add("A feeling of unreality or disconnection from yourself"); //feelings of detachment from reality or oneself
+            PanicDisQ1ans.add("Fear of losing control or going crazy");
+            PanicDisQ1ans.add("Fear of dying");
+            PanicDisA.add(PanicDisQ1ans);
+
+            PanicDisQ.add("Have you for one month or more after having a panic attack have you experienced any of the following");
+            ArrayList<String> PanicDisQ2ans = new ArrayList<>();
+            PanicDisQ2ans.add("Consistently worrying about having another panic attack or the consequences that may follow (e.g. heart attacks, “going crazy”)");
+            PanicDisQ2ans.add("Changing your behaviour due to the panic attack so as to avoid another (e.g. avoiding unfamiliar situations or exercise");
+            PanicDisQ2ans.add("None of the above");
+            PanicDisA.add(PanicDisQ2ans);
+
+            PanicDisQ.add("Are any of the following conditions more attibutable to your symptoms than panic attacks");
+            ArrayList<String> PanicDisQ3ans = new ArrayList<>();
+            PanicDisQ3ans.add("Drug abuse or medication");
+            PanicDisQ3ans.add("Hyperthyroidism");
+            PanicDisQ3ans.add("Cardiopulmonary disorder");
+            PanicDisQ3ans.add("Other medical condition");
+            PanicDisQ3ans.add("None of the above");
+            //PanicDisQ3ans.add("None of the above");
+            PanicDisA.add(PanicDisQ3ans);
+
+            PanicDisQ.add("Do the panic attacks you suffer from occur only in relation to any of the situations listed below");
+            ArrayList<String> PanicDisQ4ans = new ArrayList<>();
+            PanicDisQ4ans.add("Feared social situation"); //social anxiety
+            PanicDisQ4ans.add("Circumscribed phobic objects or situations");
+            PanicDisQ4ans.add("Obsessions"); //OCD
+            PanicDisQ4ans.add("Traumatic event"); //Truama induced anxiety
+            PanicDisQ4ans.add("Seperation of attachment figures");//Seperation anxiety
+            PanicDisQ4ans.add("None of the above.");
+            PanicDisA.add(PanicDisQ4ans);
+            //Panic Attack Specifier
+        }
     }
+
     public void update(Observable observable, Object message) {
         this.setChanged();
         this.notifyObservers();
